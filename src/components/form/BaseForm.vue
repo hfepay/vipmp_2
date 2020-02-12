@@ -20,7 +20,7 @@
     </template>
     <slot />
     <slot name="foot">
-      <el-form-item v-if="showDefaultFoot" style="text-align: center">
+      <div v-if="showDefaultFoot" style="text-align: center">
         <slot name="btn-before" />
         <el-button type="primary" @click="submit(alias)">
           {{ confirmBtnText }}
@@ -31,7 +31,7 @@
           {{ cancelBtnText }}
         </el-button>
         <slot name="btn-after" />
-      </el-form-item>
+      </div>
     </slot>
   </el-form>
 </template>

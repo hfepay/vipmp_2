@@ -22,6 +22,9 @@ module.exports = {
               <el-button  type="primary" @click="Mixins_$Search">
                 查询
               </el-button>
+              <el-button  type="primary" @click="Mixins_$Reset_QueryParams">
+                重置
+              </el-button>
             </base-form>
           </template>
           <template #layout-operate>
