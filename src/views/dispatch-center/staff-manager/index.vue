@@ -55,7 +55,7 @@
         <el-form-item label="状态：" prop="status">
           <el-select v-model="dialogForm.status" clearable placeholder="状态">
             <el-option
-              v-for="(item, $index) in $globalContants.toOptions($globalContants.statusConstans)"
+              v-for="(item, $index) in $Contants.toOptions($Contants.statusConstans)"
               :key="$index"
               :label="item.label"
               :value="item.value"

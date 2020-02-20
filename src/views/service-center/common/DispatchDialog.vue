@@ -180,7 +180,7 @@ export default {
       this.hallList = await HallApi.getOptions()
     },
     async initDispatchTaskTypeCfgList() {
-      this.dispatchTaskTypeCfgList = await DatadictApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.DISPATER_TYPE)
+      this.dispatchTaskTypeCfgList = await DatadictApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.DISPATER_TYPE)
     },
     reset() {
       this.dialogForm = this.$utils.reset(this.dialogForm)

@@ -54,7 +54,7 @@
           <el-form-item>
             <el-select v-model="queryParams.orderChannel" clearable placeholder="预约渠道">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.reserveChannel)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.reserveChannel)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -187,11 +187,11 @@ export default {
         { label: '签单人', prop: 'signer' },
         { label: '备注', prop: 'content' },
         { label: '接机牌迎接语', prop: 'greeting' },
-        { label: '状态', prop: 'orderStatus', format: this.$globalContants.reserveStatus }
+        { label: '状态', prop: 'orderStatus', format: this.$Contants.reserveStatus }
         // { label: '联系电话', prop: 'contactPhone' },
         // { label: '申请时间', prop: 'applyTime' },
         // { label: '服务人员', prop: 'waiterName' },
-        // { label: '预约渠道', prop: 'orderChannel', format: this.$globalContants.reserveChannel },
+        // { label: '预约渠道', prop: 'orderChannel', format: this.$Contants.reserveChannel },
         // { label: '操作', slot: 'operator' }
       ],
       ApiObject,
@@ -466,7 +466,7 @@ export default {
       this.dialogForm.settlementAmount = '0.00'
     },
     async cancel(obj) {
-      if (obj.orderChannel == this.$globalContants.RESERVECHANNEL_ENUM.WECHAT) {
+      if (obj.orderChannel == this.$Contants.RESERVECHANNEL_ENUM.WECHAT) {
         await this.$confirm('微信小程序预约的订单，请在微信中心-订单管理进行退款', '', {
           showCancelButton: false,
           center: true
@@ -510,10 +510,10 @@ export default {
       this.receiveOptions = await ReceiveOrgApi.getOptions()
     },
     async initCustomerOptions() {
-      this.customerOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE)
+      this.customerOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE)
     },
     async initServiceTypeOptions() {
-      this.serviceTypeOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.SERVER_TYPE)
+      this.serviceTypeOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.SERVER_TYPE)
     },
     async initHallOptions() {
       this.hallOptions = await HallApi.getOptionsByDatadictId(this.dialogForm.serviceType)

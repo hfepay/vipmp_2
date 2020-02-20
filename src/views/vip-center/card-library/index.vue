@@ -19,7 +19,7 @@
           <el-form-item label="持卡方类型：">
             <el-select v-model="queryParams.ownerType" clearable placeholder="持卡方类型">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.cardOwnerType)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.cardOwnerType)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -59,7 +59,7 @@
           <el-form-item label="状态：">
             <el-select v-model="queryParams.status" clearable placeholder="状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.valiableStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.valiableStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -105,7 +105,7 @@
         <el-form-item label="客户类型：" prop="ownerType">
           <el-select v-model="dialogForm.ownerType" clearable placeholder="状态">
             <el-option
-              v-for="(item, $index) in $globalContants.toOptions($globalContants.cardOwnerType)"
+              v-for="(item, $index) in $Contants.toOptions($Contants.cardOwnerType)"
               :key="$index"
               :label="item.label"
               :value="Number(item.value)"

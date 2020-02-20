@@ -23,7 +23,7 @@
           <el-form-item>
             <el-select v-model="queryParams.status" placeholder="请选择合同状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.contractStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.contractStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"

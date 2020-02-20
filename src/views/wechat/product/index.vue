@@ -31,8 +31,8 @@
               placeholder="状态"
             >
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions(
-                  $globalContants.productTypeSatus
+                v-for="(item, $index) in $Contants.toOptions(
+                  $Contants.productTypeSatus
                 )"
                 :key="$index"
                 :label="item.label"
@@ -324,7 +324,7 @@ export default {
       return data
     },
     async initServiceTypeOptions() {
-      this.serviceTypeOptions = await DatadictApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.SERVER_TYPE)
+      this.serviceTypeOptions = await DatadictApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.SERVER_TYPE)
     },
     async initHallOptions() {
       this.HallOptions = await HallApi.getOptions()

@@ -21,7 +21,7 @@
           <el-form-item prop="sex">
             <el-select v-model="queryParams.type" clearable placeholder="登记位置">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.registrationLocation)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.registrationLocation)"
                 :key="$index"
                 :label="item.label"
                 :value="Number(item.value)"
@@ -297,10 +297,10 @@ export default {
       }
     },
     statusOptions() {
-      return this.$globalContants.toOptions(this.reviewOptions)
+      return this.$Contants.toOptions(this.reviewOptions)
     },
     reviewOptions() {
-      return this.isFinancePage ? this.$globalContants.reviewType : this.$globalContants.reviewSecondType
+      return this.isFinancePage ? this.$Contants.reviewType : this.$Contants.reviewSecondType
     },
     getText() {
       return this.isFinancePage ? '审核' : '复核'
@@ -369,7 +369,7 @@ export default {
     },
     async initDialogCustomerTypeOptions(obj) {
       // 2: 两舱, 1接待登记
-      this.dialogCustomerTypeOptions = obj.type == 2 ? await DictionaryApi.lcList() : await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE)
+      this.dialogCustomerTypeOptions = obj.type == 2 ? await DictionaryApi.lcList() : await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE)
     },
     async getDetail(obj) {
       await this.initHallOptions(obj)

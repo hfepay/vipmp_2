@@ -19,7 +19,7 @@
           <el-form-item>
             <el-select v-model="queryParams.status" clearable filterable placeholder="状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.productTypeSatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.productTypeSatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -338,7 +338,7 @@ export default {
       this.initDatadictOptions()
     },
     async initDatadictOptions() {
-      this.datadictOptions = await DatadictApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.SERVER_TYPE)
+      this.datadictOptions = await DatadictApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.SERVER_TYPE)
     },
     async editAfter(res) {
       const startTime = this.dialogForm.startTime ? `${this.dialogForm.startTime}` : null

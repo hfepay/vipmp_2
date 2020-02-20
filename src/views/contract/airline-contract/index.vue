@@ -16,7 +16,7 @@
           <el-form-item>
             <el-select v-model="queryParams.status" filterable placeholder="请选择合同状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.contractStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.contractStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -153,7 +153,7 @@
                   <template slot-scope="scope">
                     <el-select v-model="scope.row.followerCnt" clearable filterable placeholder="请选择人数">
                       <el-option
-                        v-for="(item, $index) in $globalContants.toOptions($globalContants.followerCount)"
+                        v-for="(item, $index) in $Contants.toOptions($Contants.followerCount)"
                         :key="$index"
                         :label="item.label"
                         :value="item.value"
@@ -306,7 +306,7 @@ export default {
       return data
     },
     async addAfter() {
-      const list = await SettlementApi.getOptionsAll(this.$globalContants.DICTIONARY_ENUM.DATADUCT_ID)
+      const list = await SettlementApi.getOptionsAll(this.$Contants.DICTIONARY_ENUM.DATADUCT_ID)
       this.dialogForm.airlinePassenger = list.data.map(item => {
         return {
           datadictId: `${item.id}`,

@@ -290,7 +290,7 @@
             <el-form-item label="服务时长：" prop="duration">
               <el-select v-model="dialogForm.duration" style="width: 100%" clearable placeholder="使用时间">
                 <el-option
-                  v-for="(item, $index) in $globalContants.toOptions($globalContants.serviceTimeOptions)"
+                  v-for="(item, $index) in $Contants.toOptions($Contants.serviceTimeOptions)"
                   :key="$index"
                   :label="item.label"
                   :value="Number(item.value)"
@@ -1049,7 +1049,7 @@ export default {
       this.initServiceTypeOptions()
     },
     async initCustomerTypeOptions() {
-      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE)
+      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE)
     },
     async initWaiterOptions() {
       const currentFormHall = this.hallOptions.filter(item => item.value === this.dialogForm.hallId)[0]
@@ -1063,7 +1063,7 @@ export default {
       }
     },
     async initServiceTypeOptions() {
-      this.serviceTypeOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.SERVER_TYPE)
+      this.serviceTypeOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.SERVER_TYPE)
     },
     async initSettlementOptions() {
       this.settlementOptions = this.dialogForm.customerTypeId ? await SettlementApi.getOptions(this.dialogForm.customerTypeId) : []

@@ -44,7 +44,7 @@
 
             <el-select v-model="queryParams.orderType" clearable placeholder="交易类型">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.orderType)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.orderType)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -63,7 +63,7 @@
           <el-form-item label="交易状态：">
             <el-select v-model="queryParams.status" clearable placeholder="请输入交易状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.tradingStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.tradingStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"

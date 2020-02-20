@@ -19,7 +19,7 @@
           <el-form-item label="状态：">
             <el-select v-model="queryParams.code" clearable placeholder="发送状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.messageCode)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.messageCode)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"

@@ -62,7 +62,7 @@
           <el-form-item>
             <el-select v-model="queryParams.status" clearable placeholder="按状态查询">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.taskStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.taskStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -131,7 +131,7 @@ export default {
   },
   methods: {
     async initTaskTypeOptions() {
-      this.taskTypeOptions = await DatadictApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.DISPATER_TYPE)
+      this.taskTypeOptions = await DatadictApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.DISPATER_TYPE)
     },
     async initDeviceOptions() {
       this.dispatchDeviceOptions = await DispatchDeviceApi.getOptions()

@@ -164,7 +164,7 @@
 <script>
 /* eslint-disable no-unused-vars */
 import { Mixins } from '@/mixins/mixins'
-import ArrayUtils from '../../../utils/ArrayUtils'
+import { splitByLength } from '../../../utils/ArrayUtils'
 import ApiObject from '../../../api/module/beTrade/BeTradeCabinApi'
 import DictionaryApi from '../../../api/module/beTrade/BeTradeDatadictApi'
 import HallApi from '../../../api/module/beTrade/BeTradeHallApi'
@@ -321,7 +321,7 @@ export default {
     receiptPrintData() {
       // 根据receiptForm中的list 每5条组装成一条数据
       const data = { ...this.receiptForm }
-      const listArr = ArrayUtils.splitByLength(data.list, 5)
+      const listArr = splitByLength(data.list, 5)
       const arr = []
       listArr.forEach(list => {
         const totalAmount = list.map(item => item.amount).reduce((cur, obj, index) => Number(cur) + Number(obj))
@@ -630,7 +630,7 @@ export default {
       }
     },
     async initServiceTypeOptions() {
-      this.serviceTypeOptions = await await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.SERVER_TYPE)
+      this.serviceTypeOptions = await await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.SERVER_TYPE)
     },
     async initSettlementOptions() {
       this.settlementOptions = this.dialogForm.customerTypeId ? await SettlementApi.getOptions(this.dialogForm.customerTypeId) : []
@@ -656,7 +656,7 @@ export default {
       }
     },
     async initCustomerTypeOptions() {
-      this.customerTypeOptions = this.isRegist ? await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE) : await DictionaryApi.lcList()
+      this.customerTypeOptions = this.isRegist ? await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE) : await DictionaryApi.lcList()
     },
     submitAfter() {
       const { reserveId } = this.$route.query

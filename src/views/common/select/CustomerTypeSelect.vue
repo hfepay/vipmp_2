@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       ApiObject: ApiObject,
-      queryParams: this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE
+      queryParams: this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE
     }
   }
 }

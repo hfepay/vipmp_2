@@ -1,5 +1,5 @@
 <template>
-  <base-select v-bind="$attrs" :context="ApiObject" :api="ApiObject.getOptionsNameByType.bind(ApiObject, $globalContants.DICTIONARY_ENUM.SERVER_TYPE)" :placeholder="placeholder" v-on="$listeners" />
+  <base-select v-bind="$attrs" :context="ApiObject" :api="ApiObject.getOptionsNameByType.bind(ApiObject, $Contants.DICTIONARY_ENUM.SERVER_TYPE)" :placeholder="placeholder" v-on="$listeners" />
 </template>
 <script>
 import ApiObject from '../../../api/module/beTrade/BeTradeDatadictApi'

@@ -26,7 +26,7 @@
           <el-form-item label="预订方类型：">
             <el-select v-model="queryParams.orderType" clearable placeholder="请输入预订方类型">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.reserverType)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.reserverType)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -48,7 +48,7 @@
           <el-form-item label="订单状态：">
             <el-select v-model="queryParams.status" clearable placeholder="请输入订单状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.orderStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.orderStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -85,7 +85,7 @@
           <el-form-item label="支付方式：" prop="payType">
             <el-select v-model="queryParams.payType" clearable placeholder="请选择支付方式" style="width: 100%">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.payType)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.payType)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -310,7 +310,7 @@
             <el-form-item label="支付方式：" prop="payType">
               <el-select v-model="payDialogForm.payType" clearable placeholder="请选择支付方式" style="width: 100%">
                 <el-option
-                  v-for="(item, $index) in $globalContants.toOptions($globalContants.payType)"
+                  v-for="(item, $index) in $Contants.toOptions($Contants.payType)"
                   :key="$index"
                   :label="item.label"
                   :value="item.value"
@@ -470,16 +470,16 @@ export default {
         { label: '交易订单号', prop: 'dealId' },
         { label: '产品类型', prop: 'typeName' },
         { label: '产品名称', prop: 'productName' },
-        { label: '预订方类型', prop: 'orderType', format: this.$globalContants.reserverType },
+        { label: '预订方类型', prop: 'orderType', format: this.$Contants.reserverType },
         { label: '预订方名称', prop: 'name' },
         { label: '联系电话', prop: 'mobile' },
         { label: '预订日期', prop: 'orderDate' },
         { label: '预订时间段', prop: 'timeRange' },
         { label: '订单价格', prop: 'price' },
         { label: '实际支付', prop: 'pay' },
-        { label: '支付方式', prop: 'payType', format: this.$globalContants.payType },
+        { label: '支付方式', prop: 'payType', format: this.$Contants.payType },
         { label: '下单时间', prop: 'createTime' },
-        { label: '订单状态', prop: 'status', format: this.$globalContants.orderStatus },
+        { label: '订单状态', prop: 'status', format: this.$Contants.orderStatus },
         { label: '操作', slot: 'operator', width: 240 }
       ],
       queryParams: {
@@ -599,7 +599,7 @@ export default {
     },
     async refund(obj) {
       const { payType, pay } = obj
-      await this.$confirm(`对方使用的是${this.$globalContants.payType[payType]}支付，确认退款${pay}元?`, '确定退款')
+      await this.$confirm(`对方使用的是${this.$Contants.payType[payType]}支付，确认退款${pay}元?`, '确定退款')
       const res = await ApiObject.pay(obj)
       this.$message.success(res.message)
       this.init()

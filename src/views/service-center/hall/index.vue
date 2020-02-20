@@ -286,7 +286,7 @@ export default {
       await this.initHallOptions()
     },
     async initCustomerTypeOptions() {
-      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE)
+      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE)
     },
     async initHallOptions() {
       this.hallOptions = await HallApi.otherHallList()

@@ -59,7 +59,7 @@
         <el-form-item label="性别：" prop="sex">
           <el-select v-model="dialogForm.sex" clearable placeholder="性别">
             <el-option
-              v-for="(item, $index) in $globalContants.toOptions($globalContants.sexType)"
+              v-for="(item, $index) in $Contants.toOptions($Contants.sexType)"
               :key="$index"
               :label="item.label"
               :value="item.value"
@@ -151,7 +151,7 @@ export default {
         { label: '序号', type: 'index' },
         { label: '旅客姓名', prop: 'passengerName' },
         { label: '身份证号', prop: 'idCard' },
-        { label: '性别', prop: 'sex', format: this.$globalContants.sexType },
+        { label: '性别', prop: 'sex', format: this.$Contants.sexType },
         { label: '身份证头像', prop: 'imgName', slot: 'imgName' },
         { label: '手机号', prop: 'mobile' },
         { label: '客户类型', prop: 'customerType' },
@@ -182,7 +182,7 @@ export default {
       this.initSettlementOptions()
     },
     async initCustomerTypeOptions() {
-      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$globalContants.DICTIONARY_ENUM.CUSTOMER_TYPE)
+      this.customerTypeOptions = await DictionaryApi.getOptionsByType(this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE)
     },
     async initSettlementOptions() {
       this.settlementOptions = await SettlementApi.getOptions()

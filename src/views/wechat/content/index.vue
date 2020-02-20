@@ -20,7 +20,7 @@
           <el-form-item label="位置：">
             <el-select v-model="queryParams.place" clearable placeholder="位置">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.placeConstans)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.placeConstans)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -30,7 +30,7 @@
           <el-form-item label="状态：">
             <el-select v-model="queryParams.articleStatus" clearable placeholder="状态">
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions($globalContants.deployStatus)"
+                v-for="(item, $index) in $Contants.toOptions($Contants.deployStatus)"
                 :key="$index"
                 :label="item.label"
                 :value="item.value"
@@ -82,7 +82,7 @@
         </el-form-item>
         <el-form-item label="文章位置" prop="place">
           <el-radio-group v-model="dialogForm.place">
-            <el-radio v-for="(item, $index) in $globalContants.toOptions($globalContants.placeConstans)" :key="$index" :label="Number(item.value)">
+            <el-radio v-for="(item, $index) in $Contants.toOptions($Contants.placeConstans)" :key="$index" :label="Number(item.value)">
               {{ item.label }}
             </el-radio>
           </el-radio-group>
@@ -140,10 +140,10 @@ export default {
       headers: [
         { label: '序号', type: 'index' },
         { label: '文章标题', prop: 'title' },
-        { label: '位置', prop: 'place', format: this.$globalContants.placeConstans },
+        { label: '位置', prop: 'place', format: this.$Contants.placeConstans },
         { label: '发布时间', prop: 'deliveryTime' },
         { label: '创建时间', prop: 'foundTime' },
-        { label: '状态', prop: 'articleStatus', format: this.$globalContants.deployStatus },
+        { label: '状态', prop: 'articleStatus', format: this.$Contants.deployStatus },
         { label: '操作', slot: 'operator' }
       ],
       queryParams: {

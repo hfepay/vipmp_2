@@ -45,8 +45,8 @@
               placeholder="按状态查询"
             >
               <el-option
-                v-for="(item, $index) in $globalContants.toOptions(
-                  $globalContants.reserveStatus
+                v-for="(item, $index) in $Contants.toOptions(
+                  $Contants.reserveStatus
                 )"
                 :key="$index"
                 :label="item.label"
