@@ -89,7 +89,7 @@
       :visible.sync="sendMsgDialogVisible"
       width="900px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         :model="DialogForm"
@@ -99,7 +99,7 @@
         @cancel="sendMsgDialogVisible = false"
       >
         <el-form-item label="选择短信模板" prop="templateId">
-          <el-select v-model="dialogForm.templateId" placeholder="选择短信模板">
+          <el-select v-model="DialogForm.templateId" placeholder="选择短信模板">
             <el-option
               v-for="(item, $index) in templateOptions"
               :key="$index"
@@ -109,7 +109,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="通讯录" prop="addressBook">
-          <el-checkbox-group v-model="dialogForm.addressBook">
+          <el-checkbox-group v-model="DialogForm.addressBook">
             <el-checkbox
               v-for="(item, $index) in addressBookList"
               :key="$index"
@@ -121,7 +121,7 @@
           </el-checkbox-group>
         </el-form-item>
         <el-form-item label="该服务单旅客：" prop="passenger">
-          <el-checkbox-group v-model="dialogForm.passenger">
+          <el-checkbox-group v-model="DialogForm.passenger">
             <el-checkbox v-for="(item, $index) in passengerList" :key="$index" :label="item.value" name="passenger">
               {{ item.label }}
             </el-checkbox>
@@ -168,7 +168,7 @@ export default {
       // 发送记录list
       sendRecordsList: [],
       templateOptions: [],
-      ApiObject: ApiObject,
+      ApiObject,
       BeMiscTemplateApi: BeMiscTemplateApi,
       BeMiscSendLogApi: BeMiscSendLogApi,
       dialogFormRules: {
@@ -182,7 +182,7 @@ export default {
         passenger: [],
         addressBook: []
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '预约时间', prop: 'applyTime' },
         { label: '预约人/单位', prop: 'orderBy' },

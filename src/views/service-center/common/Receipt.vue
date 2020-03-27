@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      headers: [
+      Headers: [
         {
           rows: [
             { label: '日期', rowspan: 2 },

@@ -37,7 +37,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
       </template>
@@ -47,17 +47,17 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="旅客姓名：" prop="name">
-          <el-input v-model="dialogForm.name" placeholder="旅客姓名" />
+          <el-input v-model="DialogForm.name" placeholder="旅客姓名" />
         </el-form-item>
         <el-form-item label="身份证号：" prop="idCard">
-          <el-input v-model="dialogForm.idCard" placeholder="身份证号" />
+          <el-input v-model="DialogForm.idCard" placeholder="身份证号" />
         </el-form-item>
         <el-form-item label="性别：" prop="sex">
-          <el-select v-model="dialogForm.sex" clearable placeholder="性别">
+          <el-select v-model="DialogForm.sex" clearable placeholder="性别">
             <el-option
               v-for="(item, $index) in $Contants.toOptions($Contants.sexType)"
               :key="$index"
@@ -67,10 +67,10 @@
           </el-select>
         </el-form-item>
         <el-form-item label="手机号：" prop="mobile">
-          <el-input v-model="dialogForm.mobile" placeholder="手机号" />
+          <el-input v-model="DialogForm.mobile" placeholder="手机号" />
         </el-form-item>
         <el-form-item label="客户类型：" prop="customerTypeId">
-          <el-select v-model="dialogForm.customerTypeId" clearable placeholder="客户类型">
+          <el-select v-model="DialogForm.customerTypeId" clearable placeholder="客户类型">
             <el-option
               v-for="(item, $index) in customerTypeOptions"
               :key="$index"
@@ -80,10 +80,10 @@
           </el-select>
         </el-form-item>
         <el-form-item label="所属单位：" prop="companyName">
-          <el-input v-model="dialogForm.companyName" placeholder="所属单位" />
+          <el-input v-model="DialogForm.companyName" placeholder="所属单位" />
         </el-form-item>
         <el-form-item label="结算类型：" prop="settlementTypeId">
-          <el-select v-model="dialogForm.settlementTypeId" clearable placeholder="结算类型">
+          <el-select v-model="DialogForm.settlementTypeId" clearable placeholder="结算类型">
             <el-option
               v-for="(item, $index) in settlementOptions"
               :key="$index"
@@ -93,7 +93,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="喜好：" prop="fancy">
-          <el-input v-model="dialogForm.fancy" placeholder="喜好" />
+          <el-input v-model="DialogForm.fancy" placeholder="喜好" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -125,7 +125,7 @@ export default {
       previewDialogVisible: false,
       customerTypeOptions: [],
       settlementOptions: [],
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         passengerName: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         idCard: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
@@ -147,7 +147,7 @@ export default {
         selType: '',
         fancy: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '旅客姓名', prop: 'passengerName' },
         { label: '身份证号', prop: 'idCard' },

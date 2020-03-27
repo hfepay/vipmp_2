@@ -42,7 +42,7 @@
         <el-button type="primary" @click.stop="show(scope.row)">
           查看
         </el-button>
-        <el-button v-if="scope.row.madeCount == 0" type="primary" @click.stop="edit(scope.row)">
+        <el-button v-if="scope.row.madeCount == 0" type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button v-if="scope.row.madeCount == 0" type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -56,7 +56,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="600px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -70,17 +70,17 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="卡种名称：" prop="typeName">
-              <el-input v-model="dialogForm.typeName" placeholder="卡种名称" style="width: 330px" />
+              <el-input v-model="DialogForm.typeName" placeholder="卡种名称" style="width: 330px" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="卡面值：" prop="value">
-              <el-input v-model="dialogForm.value" type="number" placeholder="卡面值" style="width: 330px" />
+              <el-input v-model="DialogForm.value" type="number" placeholder="卡面值" style="width: 330px" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="有效期:" prop="validation">
-              <el-radio-group v-model="dialogForm.validation">
+              <el-radio-group v-model="DialogForm.validation">
                 <el-radio v-for="(item, $index) in validationOptions" :key="$index" :label="item.value">
                   {{ item.label }}
                 </el-radio>
@@ -89,7 +89,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="失效规则:" prop="rule">
-              <el-radio-group v-model="dialogForm.rule">
+              <el-radio-group v-model="DialogForm.rule">
                 <el-radio v-for="(item, $index) in ruleOptions" :key="$index" :label="item.value">
                   {{ item.label }}
                 </el-radio>
@@ -113,12 +113,12 @@
 
           <el-col :span="24">
             <el-form-item label="折扣率：" prop="discountRate">
-              <el-input v-model="dialogForm.discountRate" placeholder="请输入折扣率(0~9.99)" style="width: 330px" /> 折
+              <el-input v-model="DialogForm.discountRate" placeholder="请输入折扣率(0~9.99)" style="width: 330px" /> 折
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="权益介绍：" prop="remark">
-              <el-input v-model="dialogForm.remark" type="textarea" placeholder="服务项目" style="width: 330px" />
+              <el-input v-model="DialogForm.remark" type="textarea" placeholder="服务项目" style="width: 330px" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -153,7 +153,7 @@ export default {
         label: 'name'
       },
       treeOption: [],
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: {
         id: '',
         typeName: ''
@@ -187,7 +187,7 @@ export default {
         remark: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         supportServiceList: [{ type: 'array', required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '卡种ID', prop: 'typeCode' },
         { label: '卡种名称', prop: 'typeName' },
@@ -218,7 +218,7 @@ export default {
     }
   },
   methods: {
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.checkedKeys = []
       this.dialogForm.validation = 1
     },

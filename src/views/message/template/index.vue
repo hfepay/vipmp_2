@@ -18,7 +18,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -31,14 +31,14 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="模板名称：" prop="title">
-          <el-input v-model="dialogForm.title" placeholder="模板名称" />
+          <el-input v-model="DialogForm.title" placeholder="模板名称" />
         </el-form-item>
         <el-form-item label="模板内容：" prop="content">
-          <el-input v-model="dialogForm.content" type="textarea" autosize placeholder="模板内容" />
+          <el-input v-model="DialogForm.content" type="textarea" autosize placeholder="模板内容" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -52,7 +52,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         title: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         content: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
@@ -61,7 +61,7 @@ export default {
         title: '',
         content: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '模板名称', prop: 'title' },
         { label: '模板内容', prop: 'content' },

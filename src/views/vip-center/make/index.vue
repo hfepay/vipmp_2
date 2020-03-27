@@ -56,11 +56,11 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="卡种ID：" prop="typeId">
-          <el-select v-model="dialogForm.typeId" clearable placeholder="卡种ID">
+          <el-select v-model="DialogForm.typeId" clearable placeholder="卡种ID">
             <el-option
               v-for="(item, $index) in cardTypeOptions"
               :key="$index"
@@ -69,7 +69,7 @@
             />
           </el-select>
         </el-form-item><el-form-item label="发行渠道ID：" prop="channelId">
-          <el-select v-model="dialogForm.channelId" clearable placeholder="发行渠道ID">
+          <el-select v-model="DialogForm.channelId" clearable placeholder="发行渠道ID">
             <el-option
               v-for="(item, $index) in channelOptions"
               :key="$index"
@@ -95,7 +95,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       WechatCardTypeApi: WechatCardTypeApi,
       WechatChannelApi: WechatChannelApi,
       cardTypeOptions: [],
@@ -110,7 +110,7 @@ export default {
         channelId: '',
         madeCount: 0
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '卡种ID', prop: 'typeCode' },
         { label: '卡种名称', prop: 'typeName' },

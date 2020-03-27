@@ -16,7 +16,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -29,13 +29,13 @@
       :visible.sync="Mixins_$DialogVisible"
       width="930px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-row>
           <el-col :span="8">
             <el-form-item label="服务类型：" prop="typeId">
-              <el-select v-model="dialogForm.typeId" clearable placeholder="服务类型" style="width: 100%">
+              <el-select v-model="DialogForm.typeId" clearable placeholder="服务类型" style="width: 100%">
                 <el-option
                   v-for="(item, $index) in serviceTypeOptions"
                   :key="$index"
@@ -48,7 +48,7 @@
           <template v-if="!isJJ">
             <el-col :span="8">
               <el-form-item label="厅房：" prop="houseId">
-                <el-select v-model="dialogForm.houseId" clearable placeholder="厅房" style="width: 100%">
+                <el-select v-model="DialogForm.houseId" clearable placeholder="厅房" style="width: 100%">
                   <el-option
                     v-for="(item, $index) in hallOptions"
                     :key="$index"
@@ -67,7 +67,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="价格：" prop="price">
-              <el-input v-model="dialogForm.price" type="number" placeholder="请输入价格">
+              <el-input v-model="DialogForm.price" type="number" placeholder="请输入价格">
                 <template slot="append">
                   元
                 </template>
@@ -76,18 +76,18 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="排列顺序：" prop="orderNum">
-              <el-input v-model="dialogForm.orderNum" type="number" placeholder="请输入排列顺序" />
+              <el-input v-model="DialogForm.orderNum" type="number" placeholder="请输入排列顺序" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-form-item label="服务标准：" prop="serviceStandard">
-          <el-input v-model="dialogForm.serviceStandard" type="textarea" placeholder="请输入服务标准" />
+          <el-input v-model="DialogForm.serviceStandard" type="textarea" placeholder="请输入服务标准" />
         </el-form-item>
         <el-form-item label="差异化服务：" prop="serviceDifferent">
-          <el-input v-model="dialogForm.serviceDifferent" type="textarea" placeholder="请输入差异化服务" />
+          <el-input v-model="DialogForm.serviceDifferent" type="textarea" placeholder="请输入差异化服务" />
         </el-form-item>
         <el-form-item label="备注：" prop="remarks">
-          <el-input v-model="dialogForm.remarks" type="textarea" placeholder="请输入差异化服务" />
+          <el-input v-model="DialogForm.remarks" type="textarea" placeholder="请输入差异化服务" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -106,8 +106,8 @@ export default {
     return {
       serviceTypeOptions: [],
       hallOptions: [],
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       dialogFormRules: {
         typeId: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         houseId: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
@@ -125,7 +125,7 @@ export default {
         remarks: '',
         orderNum: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '服务类型', prop: 'typeName' },
         { label: '区域', prop: 'region' },

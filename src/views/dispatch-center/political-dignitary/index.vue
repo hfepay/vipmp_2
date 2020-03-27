@@ -32,7 +32,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '作业编号', prop: 'id' },
         { label: '航班号', prop: 'flightNo' },
@@ -58,7 +58,7 @@ export default {
         { label: '登机完成到达', prop: 'boardingConfirm' }
         // { label: '分配手持', prop: 'assignHandset' },
       ],
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: {
         flight_date: ''
       }

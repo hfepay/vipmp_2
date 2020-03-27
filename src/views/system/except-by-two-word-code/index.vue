@@ -47,10 +47,10 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <!-- <el-button @click.stop="edit(scope.row)">
+        <!-- <el-button @click.stop="Mixins_$Edit(scope.row)">
           查看
         </el-button>-->
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -63,11 +63,11 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="二字码：" prop="airlineCode">
-          <el-input v-model="dialogForm.airlineCode" placeholder="类型">
+          <el-input v-model="DialogForm.airlineCode" placeholder="类型">
             <!--<template slot="append" >
               <el-button @click="queryByTwoCode">查询</el-button>
             </template>-->
@@ -78,7 +78,7 @@
             全选
           </el-checkbox>
           <div style="margin: 15px 0;" />
-          <el-checkbox-group v-model="dialogForm.checkedFlightCompanys" @change="handleCheckedFlightCompanyChange">
+          <el-checkbox-group v-model="DialogForm.checkedFlightCompanys" @change="handleCheckedFlightCompanyChange">
             <el-checkbox v-for="(item, $index) in flightCompanys" :key="$index" :label="item.label" />
           </el-checkbox-group>
         </el-form-item>
@@ -99,7 +99,7 @@ export default {
       checkedFlightCompanys: [],
       flightCompanys: [],
       isIndeterminate: true,
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         airlineCode: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         airlineCompany: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
@@ -109,7 +109,7 @@ export default {
         airlineCompany: '',
         checkedFlightCompanys: []
       },
-      headers: [
+      Headers: [
         { label: '二字码', prop: 'airlineCode' },
         { label: '搜索排除项', prop: 'airlineCompany', slot: 'airlineCompany' },
         { label: '操作', slot: 'operator' }
@@ -129,7 +129,7 @@ export default {
     }
   },
   methods: {
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.flightCompanys = []
     },
     editAfter() {

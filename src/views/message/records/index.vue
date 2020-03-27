@@ -42,8 +42,8 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
-      headers: [
+      ApiObject,
+      Headers: [
         { label: '发送人', prop: 'creator' },
         { label: '发送内容', prop: 'content' },
         { label: '接收人', prop: 'addressName' },

@@ -111,8 +111,8 @@ export default {
   },
   data() {
     return {
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       details: null,
       queryParams: {
         date: '',

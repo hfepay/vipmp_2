@@ -114,7 +114,7 @@
           服务结束
         </el-button>
 
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <!--<el-button type="danger" @click.stop="Mixins_$Del(scope.row)" v-if="roles.includes('记录删除')">
@@ -203,7 +203,7 @@ export default {
       multipleSelection: [],
       polling: true,
       scanCodeRegistrationTimer: null, // 扫码登记定时器
-      pagination: false,
+      Mixins_Pagination: false,
       scanCodeInfo: '', // 扫码信息
       tryTime: 0, // websocket重试连接次数
       settlementOptions: [], // 结算类型下拉框
@@ -611,7 +611,7 @@ export default {
       this.websock = null
     },
     /* websocket end */
-    initAspectAfter() {
+    Mixins_InitBefore() {
       !this.isRegist && this.initVipNum()
     },
     async createdAspectBefore() {

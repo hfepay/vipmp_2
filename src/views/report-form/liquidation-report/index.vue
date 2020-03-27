@@ -38,8 +38,8 @@ export default {
   data() {
     return {
       timeRangeToCamelCase: true,
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       baseHeaders: [
         { label: '发生地机场', prop: 'airport' },
         { label: '航班日期', prop: 'serveDate' },

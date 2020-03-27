@@ -35,9 +35,9 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      pagination: false,
-      ApiObject: ApiObject,
-      headers: [
+      Mixins_Pagination: false,
+      ApiObject,
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航空公司名称', prop: 'airline' },
         { label: '头等舱旅客服务', prop: 'tdclk' },

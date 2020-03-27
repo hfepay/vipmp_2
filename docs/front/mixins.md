@@ -38,12 +38,12 @@ table搜索条件,默认:{}
 ```
 if (this.validateSearchParams()) {
   this.getTableData()
-  this.initAspectAfter()
+  this.Mixins_InitBefore()
 }
 ```
 初始化方法，这里校验通过后执行两个方法:  
 1. getTableData:加载列表  
-2. initAspectAfter:自定义扩展方法:一般用于跟table联动的数据
+2. Mixins_InitBefore:自定义扩展方法:一般用于跟table联动的数据
 + validateSearchParams  
 搜索前校验搜索条件，是否某些必选项为空，默认返回true。
 + search  
@@ -97,7 +97,7 @@ if (this.validateSearchParams()) {
 扩展方法，获取最终表单数据
 + reset  
 关闭弹窗重置dialogForm
-+ resetAfter  
++ Mixins_ResetAfter  
 扩展方法，重置dialogForm后调用
 + del  
 删除

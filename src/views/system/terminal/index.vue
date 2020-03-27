@@ -16,7 +16,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -29,23 +29,23 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="编号：" prop="code">
-          <el-input v-model="dialogForm.code" placeholder="请输入编号" />
+          <el-input v-model="DialogForm.code" placeholder="请输入编号" />
         </el-form-item>
         <el-form-item label="机器序列号：" prop="deviceCode">
-          <el-input v-model="dialogForm.deviceCode" placeholder="请输入机器序列号" />
+          <el-input v-model="DialogForm.deviceCode" placeholder="请输入机器序列号" />
         </el-form-item>
         <el-form-item label="设备名称：" prop="name">
-          <el-input v-model="dialogForm.name" placeholder="请输入设备名称" />
+          <el-input v-model="DialogForm.name" placeholder="请输入设备名称" />
         </el-form-item>
         <el-form-item label="所属班组：" prop="teamName">
-          <el-input v-model="dialogForm.teamName" placeholder="请输入设备名称" />
+          <el-input v-model="DialogForm.teamName" placeholder="请输入设备名称" />
         </el-form-item>
         <!--<el-form-item label="所属班组：" prop="teamId">-->
-        <!--<el-select v-model="dialogForm.teamId" clearable placeholder="所属班组" style="width: 100%">-->
+        <!--<el-select v-model="DialogForm.teamId" clearable placeholder="所属班组" style="width: 100%">-->
         <!--<el-option-->
         <!--v-for="(item, $index) in groupOptions"-->
         <!--:key="$index"-->
@@ -67,8 +67,8 @@ export default {
   props: {},
   data() {
     return {
-      ApiObject: ApiObject,
-      pagination: false,
+      ApiObject,
+      Mixins_Pagination: false,
       dialogFormRules: {
         code: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         deviceCode: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
@@ -81,7 +81,7 @@ export default {
         name: '',
         teamId: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '编号', prop: 'code' },
         { label: '机器序列号', prop: 'deviceCode' },

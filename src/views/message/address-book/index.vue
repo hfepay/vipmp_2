@@ -28,7 +28,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -41,14 +41,14 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="姓名：" prop="name">
-          <el-input v-model="dialogForm.name" placeholder="姓名" />
+          <el-input v-model="DialogForm.name" placeholder="姓名" />
         </el-form-item>
         <el-form-item label="手机号：" prop="phoneNum">
-          <el-input v-model="dialogForm.phoneNum" placeholder="手机号" />
+          <el-input v-model="DialogForm.phoneNum" placeholder="手机号" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -62,7 +62,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         name: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         phoneNum: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
@@ -71,7 +71,7 @@ export default {
         phoneNum: '',
         name: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '姓名', prop: 'name' },
         { label: '手机号', prop: 'phoneNum' },

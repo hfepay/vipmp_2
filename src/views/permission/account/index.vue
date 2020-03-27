@@ -156,7 +156,7 @@ export default {
       }
     }
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       organizationOptions: [],
       PasswordFormVisible: false,
       RoleDialogVisible: false,

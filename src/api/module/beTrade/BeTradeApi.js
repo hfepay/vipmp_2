@@ -1,7 +1,7 @@
 import BaseApi from '../../base/BaseApi'
 class BeAccountApi extends BaseApi {
   constructor(entity) {
-    super('beTrade', entity)
+    super('trade', entity)
   }
 }
 

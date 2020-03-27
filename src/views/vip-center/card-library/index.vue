@@ -80,7 +80,7 @@
           查看
         </el-button>
         <template v-if="scope.row.status == '1'">
-          <el-button type="primary" @click.stop="edit(scope.row)">
+          <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
             修改
           </el-button>
           <el-button type="danger" @click.stop="freeze(scope.row)">
@@ -99,11 +99,11 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="客户类型：" prop="ownerType">
-          <el-select v-model="dialogForm.ownerType" clearable placeholder="状态">
+          <el-select v-model="DialogForm.ownerType" clearable placeholder="状态">
             <el-option
               v-for="(item, $index) in $Contants.toOptions($Contants.cardOwnerType)"
               :key="$index"
@@ -113,13 +113,13 @@
           </el-select>
         </el-form-item>
         <el-form-item label="持卡方名称：" prop="ownerName">
-          <el-input v-model="dialogForm.ownerName" placeholder="类型" />
+          <el-input v-model="DialogForm.ownerName" placeholder="类型" />
         </el-form-item>
         <el-form-item label="办理人身份证号：" prop="idNumber">
-          <el-input v-model="dialogForm.idNumber" placeholder="类型" />
+          <el-input v-model="DialogForm.idNumber" placeholder="类型" />
         </el-form-item>
         <el-form-item label="联系电话：" prop="phoneNum">
-          <el-input v-model="dialogForm.phoneNum" placeholder="类型" />
+          <el-input v-model="DialogForm.phoneNum" placeholder="类型" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -128,7 +128,7 @@
       :visible.sync="cardDialogVisible"
       width="530px"
       center客户类型
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="cardDialogForm" :show-default-foot="false" label-width="120px">
         <el-form-item label="卡号：" prop="cardNum">
@@ -200,13 +200,13 @@ export default {
       cardDialogForm: {},
       queryItemByRequest: false,
       cardDialogVisible: false,
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         a: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
       dialogForm: {
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '卡号', prop: 'cardNum' },
         { label: '卡种ID', prop: 'typeCode' },

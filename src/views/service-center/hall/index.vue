@@ -42,7 +42,7 @@
         <el-button type="primary" @click.stop="show(scope.row)">
           查看
         </el-button>
-        <!--<el-button type="primary" @click.stop="edit(scope.row)">
+        <!--<el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>-->
         <el-button v-if="scope.row.status != '1'" @click="leave(scope.row)">
@@ -100,17 +100,17 @@ export default {
       maxRetry: 3, // 最大重连次数
       polling: true,
       dispatchOptions: {},
-      pagination: false,
+      Mixins_Pagination: false,
       pushInfoList: [],
       customerTypeOptions: [],
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {},
       dialogForm: {},
       websock: null,
       websocketMsgScheduled: null,
       dispatchDialogForm: {},
       dispatchDialogVisible: false,
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航班', prop: 'flightCode' },
         { label: '姓名', prop: 'name' },

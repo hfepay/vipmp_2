@@ -41,6 +41,7 @@ import Print from '@/utils/print' // 引入附件的js文件
 Vue.use(Print) // 注册
 Vue.use(ElementUI, { size: 'mini' })
 Vue.config.productionTip = process.env.NODE_ENV === 'development'
+
 Vue.prototype.$utils = Utils
 Vue.prototype.$Contants = GlobalConstants
 Vue.prototype.$moment = moment

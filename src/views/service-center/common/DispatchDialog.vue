@@ -5,19 +5,19 @@
     :visible.sync="Mixins_$DialogVisible"
     width="800px"
     center
-    @closed="reset"
+    @closed="Mixins_$Reset"
   >
     <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="130px" @submit="Mixins_$Submit" @cancel="$emit('closed')">
       <el-row>
         <el-col :span="12">
           <el-form-item v-if="dialogForm.jobFlag" label="全流程保障：" prop="jobFlag">
             <el-switch
-              v-model="dialogForm.jobFlag"
+              v-model="DialogForm.jobFlag"
               disabled
             />
           </el-form-item>
           <el-form-item v-else label="任务类型：" prop="taskType">
-            <el-select v-model="dialogForm.taskType" style="width: 100%" clearable placeholder="任务类型">
+            <el-select v-model="DialogForm.taskType" style="width: 100%" clearable placeholder="任务类型">
               <el-option
                 v-for="(item, $index) in dispatchTaskTypeCfgList"
                 :key="$index"
@@ -29,52 +29,52 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="旅客姓名：" prop="passengerName">
-            <el-input v-model="dialogForm.passengerName" placeholder="旅客姓名" />
+            <el-input v-model="DialogForm.passengerName" placeholder="旅客姓名" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="旅客人数：" prop="headcount">
-            <el-input v-model="dialogForm.headcount" placeholder="旅客人数" />
+            <el-input v-model="DialogForm.headcount" placeholder="旅客人数" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="手机号码：" prop="phoneNo">
-            <el-input v-model="dialogForm.phoneNo" placeholder="手机号码" />
+            <el-input v-model="DialogForm.phoneNo" placeholder="手机号码" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="航班号：" prop="flight">
-            <el-input v-model="dialogForm.flightNo" placeholder="航班号" />
+            <el-input v-model="DialogForm.flightNo" placeholder="航班号" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="起飞/到达：" prop="fromTo">
-            <el-input v-model="dialogForm.fromTo" placeholder="起飞/到达" />
+            <el-input v-model="DialogForm.fromTo" placeholder="起飞/到达" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="起飞时间：" prop="etd">
-            <el-input v-model="dialogForm.etd" placeholder="起飞时间" />
+            <el-input v-model="DialogForm.etd" placeholder="起飞时间" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="到达时间：" prop="eta">
-            <el-input v-model="dialogForm.eta" placeholder="到达时间" />
+            <el-input v-model="DialogForm.eta" placeholder="到达时间" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="停机位：" prop="parkingLot">
-            <el-input v-model="dialogForm.parkingLot" placeholder="停机位" />
+            <el-input v-model="DialogForm.parkingLot" placeholder="停机位" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="登机口：" prop="boardingGate">
-            <el-input v-model="dialogForm.boardingGate" placeholder="登记口" />
+            <el-input v-model="DialogForm.boardingGate" placeholder="登记口" />
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="服务厅房：" prop="loungeName">
-            <el-select v-model="dialogForm.loungeName" style="width: 100%" clearable placeholder="服务厅房">
+            <el-select v-model="DialogForm.loungeName" style="width: 100%" clearable placeholder="服务厅房">
               <el-option
                 v-for="(item, $index) in hallList"
                 :key="$index"
@@ -86,7 +86,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="分配手持：" prop="assignHandsetId">
-            <el-select v-model="dialogForm.assignHandsetId" style="width: 100%" clearable placeholder="分配手持">
+            <el-select v-model="DialogForm.assignHandsetId" style="width: 100%" clearable placeholder="分配手持">
               <el-option
                 v-for="(item, $index) in dispatchDeviceList"
                 :key="$index"
@@ -98,7 +98,7 @@
         </el-col>
         <el-col :span="24">
           <el-form-item label="备注：" prop="notes">
-            <el-input v-model="dialogForm.notes" type="textarea" placeholder="备注" />
+            <el-input v-model="DialogForm.notes" type="textarea" placeholder="备注" />
           </el-form-item>
         </el-col>
       </el-row>

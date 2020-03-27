@@ -26,7 +26,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -39,14 +39,14 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="清算项目名称：" prop="prjName">
-          <el-input v-model="dialogForm.prjName" />
+          <el-input v-model="DialogForm.prjName" />
         </el-form-item>
         <el-form-item label="清算项目编码：" prop="prjCode">
-          <el-input v-model="dialogForm.prjCode" />
+          <el-input v-model="DialogForm.prjCode" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -60,8 +60,8 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       dialogFormRules: {
         prjName: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         prjCode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
@@ -70,7 +70,7 @@ export default {
         prjName: '',
         prjCode: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '清算项目名称', prop: 'prjName' },
         { label: '清算项目编码', prop: 'prjCode' },

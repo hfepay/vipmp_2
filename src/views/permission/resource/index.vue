@@ -58,7 +58,7 @@ export default {
       QueryParamsHeaders: [],
       /* 搜索条件 */
       QueryParams: {},
-      ApiObject: ApiObject,
+      ApiObject,
       /* 弹窗表头 */
       DialogFormHeaders: [
         { label: 'id', prop: 'id' },

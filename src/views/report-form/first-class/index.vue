@@ -72,16 +72,16 @@ export default {
   data() {
     return {
       summaryFields: ['peopleNum', 'totalAmount'],
-      pagination: false,
+      Mixins_Pagination: false,
       airlineCompanyDialogVisible: false,
-      ApiObject: ApiObject,
+      ApiObject,
       airlineOptions: [], // 航空公司下拉框
       queryParams: {
         timeRange: [],
         // date: this.$moment().format('YYYY-MM'),
         airlineCode: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '名称', prop: 'settlementName' },
         { label: '人数', prop: 'peopleNum' },

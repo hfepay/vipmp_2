@@ -119,7 +119,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           查看
         </el-button>
         <template v-if="scope.row.status == 1">
@@ -148,7 +148,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="900px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="DialogForm" :rules="dialogFormRules" :show-default-foot="dialogForm.operateType === 'regist'" confirm-btn-text="接待登记" label-width="120px" @submit="toRegistPage" @cancel="Mixins_$DialogVisible = false">
         <el-row>
@@ -245,7 +245,7 @@
         </el-row>
         <el-row v-if="dialogForm.operateType === 'regist'">
           <el-form-item label="登记位置：" prop="registType">
-            <el-radio-group v-model="dialogForm.registType">
+            <el-radio-group v-model="DialogForm.registType">
               <el-radio v-for="(item, $index) in registTypeList" :key="$index" :label="item.value">
                 {{ item.label }}
               </el-radio>
@@ -410,7 +410,7 @@ export default {
       productTypeOptions: [],
       settlementOptions: [],
       cardOptions: [],
-      ApiObject: ApiObject,
+      ApiObject,
       payDialogVisible: false,
       payDialogForm: {
         id: '',
@@ -464,7 +464,7 @@ export default {
           { required: true, message: '必填项不能为空', trigger: 'blur' }
         ]
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '订单号', prop: 'id' },
         { label: '交易订单号', prop: 'dealId' },

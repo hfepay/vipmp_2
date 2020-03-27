@@ -49,7 +49,7 @@ export default {
       QueryParamsHeaders: [
         { label: '角色名称', prop: 'roleName' }
       ],
-      ApiObject: ApiObject,
+      ApiObject,
       checkedKeys: [],
       treeOption: [],
       RoleDialogVisible: false,

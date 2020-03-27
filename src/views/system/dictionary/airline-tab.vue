@@ -30,7 +30,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -41,10 +41,10 @@
         @cancel="Mixins_$DialogVisible = false"
       >
         <el-form-item label="航司二字码：" prop="airlineCode">
-          <el-input v-model="dialogForm.airlineCode" />
+          <el-input v-model="DialogForm.airlineCode" />
         </el-form-item>
         <el-form-item label="航空公司名称：" prop="airline">
-          <el-select v-model="dialogForm.airline">
+          <el-select v-model="DialogForm.airline">
             <el-option
               v-for="(item, $index) in airLineList"
               :key="$index"
@@ -68,7 +68,7 @@ export default {
     return {
       queryKey: 'airlineCode',
       airLineList: [],
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         airlineCode: [{ required: true, message: '航司二字码不能为空' }],
         airline: [{ required: true, message: '航空公司名称不能为空' }]
@@ -77,7 +77,7 @@ export default {
         airlineCode: '',
         airline: ''
       },
-      headers: [
+      Headers: [
         { type: 'index', label: '序号' },
         { label: '航司二字码', prop: 'airlineCode' },
         { label: '航空公司名称', prop: 'airline' },

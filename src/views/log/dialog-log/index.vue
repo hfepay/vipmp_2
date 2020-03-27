@@ -44,7 +44,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         // 根据下拉列表格式化
         { label: '厅房', prop: 'hallName' },
@@ -55,13 +55,13 @@ export default {
         { label: '内容', prop: 'context', slot: 'context' },
         { label: 'ip', prop: 'remoteIp' }
       ],
-      pagination: false,
+      Mixins_Pagination: false,
       // 厅房名称前端格式化，第一次先加载厅房列表  再加载表格数据
       // 第一次厅房下拉是否加载完毕
       hallOptionsLoaded: false,
       // 第一次表格加载是否完毕
       tableDataLoaded: false,
-      ApiObject: ApiObject,
+      ApiObject,
       hallOptions: {},
       queryParams: {
         createTime: '',

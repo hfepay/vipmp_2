@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: this.$Contants.DICTIONARY_ENUM.CUSTOMER_TYPE
     }
   }

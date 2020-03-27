@@ -62,7 +62,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button @click.stop="edit(scope.row)">
+        <el-button @click.stop="Mixins_$Edit(scope.row)">
           修改
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -76,7 +76,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="1000px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -90,7 +90,7 @@
           <el-col :span="12">
             <el-form-item label="合同名称：" prop="contractName">
               <el-input
-                v-model="dialogForm.contractName"
+                v-model="DialogForm.contractName"
                 placeholder="合同名称"
                 :maxlength="50"
                 style="width: 350px"
@@ -99,7 +99,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="商旅名称：" prop="slId">
-              <el-select v-model="dialogForm.slId" filterable placeholder="请选择商旅公司" style="width: 325px">
+              <el-select v-model="DialogForm.slId" filterable placeholder="请选择商旅公司" style="width: 325px">
                 <el-option
                   v-for="(item, $index) in businessOptions"
                   :key="$index"
@@ -112,7 +112,7 @@
           <el-col :span="12">
             <el-form-item label="合同有效期：" prop="timeRange">
               <el-date-picker
-                v-model="dialogForm.timeRange"
+                v-model="DialogForm.timeRange"
                 value-format="yyyy-MM-dd"
                 type="daterange"
                 range-separator="至"
@@ -123,12 +123,12 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="合同保证金：" prop="deposit">
-              <el-input v-model="dialogForm.deposit" placeholder="合同保证金" type="text" :maxlength="10" />
+              <el-input v-model="DialogForm.deposit" placeholder="合同保证金" type="text" :maxlength="10" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="结算方式：" prop="settlementType">
-              <el-input v-model="dialogForm.settlementType" placeholder="结算方式" type="textarea" :maxlength="50" />
+              <el-input v-model="DialogForm.settlementType" placeholder="结算方式" type="textarea" :maxlength="50" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -146,17 +146,17 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="出发：" prop="serviceContentStart">
-              <el-input v-model="dialogForm.serviceContentStart" type="text" :maxlength="50" />
+              <el-input v-model="DialogForm.serviceContentStart" type="text" :maxlength="50" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label-width="10px" prop="chargeStandardOutStart">
-              <el-input v-model="dialogForm.chargeStandardOutStart" type="number" />
+              <el-input v-model="DialogForm.chargeStandardOutStart" type="number" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label-width="10px" prop="chargeStandardInStart">
-              <el-input v-model="dialogForm.chargeStandardInStart" type="number" />
+              <el-input v-model="DialogForm.chargeStandardInStart" type="number" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -174,17 +174,17 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="到达：" prop="serviceContentEnd">
-              <el-input v-model="dialogForm.serviceContentEnd" type="text" :maxlength="50" />
+              <el-input v-model="DialogForm.serviceContentEnd" type="text" :maxlength="50" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label-width="10px" prop="chargeStandardOutEnd">
-              <el-input v-model="dialogForm.chargeStandardOutEnd" type="text" :maxlength="50" />
+              <el-input v-model="DialogForm.chargeStandardOutEnd" type="text" :maxlength="50" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label-width="10px" prop="chargeStandardInEnd">
-              <el-input v-model="dialogForm.chargeStandardInEnd" type="text" :maxlength="50" />
+              <el-input v-model="DialogForm.chargeStandardInEnd" type="text" :maxlength="50" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -192,7 +192,7 @@
           <el-col :span="24">
             <el-form-item label="合同扫描件上传：">
               <base-upload
-                v-model="dialogForm.imgName"
+                v-model="DialogForm.imgName"
                 list-type="picture-card"
                 :file-list="fileList"
               >
@@ -234,7 +234,7 @@ export default {
         chargeStandardOutEnd: [{ required: true, validator: validateTwoFloat, trigger: 'change' }]
 
       },
-      ApiObject: ApiObject,
+      ApiObject,
       businessOptions: [], // 商旅公司下拉框
       queryParams: {
         status: '1',
@@ -257,7 +257,7 @@ export default {
         imgName: []
       },
 
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '对方名称', prop: 'theirName' },
         { label: '合同名称', prop: 'contractName' },
@@ -271,7 +271,7 @@ export default {
     }
   },
   methods: {
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.dialogForm.deposit = '0.00'
       this.dialogForm.chargeStandardInStart = '0.00'
       this.dialogForm.chargeStandardOutStart = '0.00'

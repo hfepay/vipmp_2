@@ -42,7 +42,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button @click.stop="edit(scope.row)">
+        <el-button @click.stop="Mixins_$Edit(scope.row)">
           修改
         </el-button>
         <el-button v-if="scope.row.status =='已上架' " @click.stop="lower(scope.row)">
@@ -62,7 +62,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="600px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -75,7 +75,7 @@
         <el-row>
           <el-col :span="24">
             <el-form-item label="关联服务类型：" prop="datadictId">
-              <el-select v-model="dialogForm.datadictId" filterable placeholder="请选择" style="width: 325px">
+              <el-select v-model="DialogForm.datadictId" filterable placeholder="请选择" style="width: 325px">
                 <el-option
                   v-for="(item, $index) in datadictOptions"
                   :key="$index"
@@ -87,7 +87,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="类型名称：" prop="name">
-              <el-input v-model="dialogForm.name" placeholder="产品类型" style="width: 330px" />
+              <el-input v-model="DialogForm.name" placeholder="产品类型" style="width: 330px" />
             </el-form-item>
           </el-col>
 
@@ -124,13 +124,13 @@
 
           <el-col :span="24">
             <el-form-item label="可预订日期范围：" prop="dateRange">
-              后  <el-input v-model="dialogForm.dateRange" type="number" placeholder="整数" style="width: 310px" /> 天
+              后  <el-input v-model="DialogForm.dateRange" type="number" placeholder="整数" style="width: 310px" /> 天
             </el-form-item>
           </el-col>
           <el-col :span="23">
             <el-form-item label="可预订时间范围：" prop="timeRange">
               <el-time-picker
-                v-model="dialogForm.timeRange"
+                v-model="DialogForm.timeRange"
                 is-range
                 format="HH:mm"
                 value-format="HH:mm"
@@ -142,12 +142,12 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="单次服务时长:" prop="singleTime">
-              <el-input v-model="dialogForm.singleTime" type="number" placeholder="小于单日总时长的整数" style="width: 320px" /> 小时
+              <el-input v-model="DialogForm.singleTime" type="number" placeholder="小于单日总时长的整数" style="width: 320px" /> 小时
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="时间选择间隔:" prop="timeInterval">
-              <el-radio-group v-model="dialogForm.timeInterval">
+              <el-radio-group v-model="DialogForm.timeInterval">
                 <el-radio label="15">
                   15分钟
                 </el-radio>
@@ -162,7 +162,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="库存规则:" prop="stockRule">
-              <el-radio-group v-model="dialogForm.stockRule">
+              <el-radio-group v-model="DialogForm.stockRule">
                 <el-radio label="0">
                   单个产品预订时间不能交叉
                 </el-radio>
@@ -174,23 +174,23 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="排序：" prop="orderNum">
-              <el-input v-model="dialogForm.orderNum" type="number" placeholder="整数" style="width: 330px" />
+              <el-input v-model="DialogForm.orderNum" type="number" placeholder="整数" style="width: 330px" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="预约须知：" prop="notice">
-              <el-input v-model="dialogForm.notice" autosize type="textarea" placeholder="预约须知" style="width: 330px" />
+              <el-input v-model="DialogForm.notice" autosize type="textarea" placeholder="预约须知" style="width: 330px" />
             </el-form-item>
           </el-col>
           <el-col v-if="!dialogForm.id" :span="24">
             <el-form-item label="是否立即上架：" prop="deploy">
-              <el-switch v-model="dialogForm.deploy" />
+              <el-switch v-model="DialogForm.deploy" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item label="图库：" prop="imgName">
               <base-upload
-                v-model="dialogForm.imgName"
+                v-model="DialogForm.imgName"
                 :limit="3"
                 :file-size="2"
                 list-type="picture-card"
@@ -219,7 +219,7 @@ export default {
   mixins: [Mixins],
   data: function() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       datadictOptions: [], // 产品类型下拉框
       queryParams: {
         status: '',
@@ -268,7 +268,7 @@ export default {
         notice: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         imgName: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '服务编码', prop: 'datadictCode' },
         { label: '类型名称', prop: 'name' },
@@ -300,7 +300,7 @@ export default {
       this.init()
       this.$message.success(result.message)
     },
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.fileList = []
       this.dialogForm.labelList = [{}]
       this.dialogForm.timeRange = ''

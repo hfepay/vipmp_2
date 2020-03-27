@@ -73,8 +73,8 @@ export default {
   data() {
     return {
       totalCountData: '',
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       businessOptions: [], // 商旅公司下拉框
       // 其他项
       ppCabinTotal: 0,
@@ -88,7 +88,7 @@ export default {
         isElectronicRecord: '1',
         companyName: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '日期', prop: 'serveDate' },
         { label: '姓名', prop: 'passengerName' },

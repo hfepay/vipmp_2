@@ -599,7 +599,7 @@ export default {
       dispatchStatTaskList: [], // 第一个table
       overallList: [], // 第二个table
       dynamicTable: [],
-      ApiObject: ApiObject,
+      ApiObject,
       taskUnCompletedNumber: 0,
       taskCompletedNumber: 0,
       dispatchTaskList: [],

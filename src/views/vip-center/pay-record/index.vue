@@ -108,8 +108,8 @@ export default {
     return {
       cardTypeOptions: [],
       settlementOptions: [],
-      ApiObject: ApiObject,
-      headers: [
+      ApiObject,
+      Headers: [
         { label: '交易订单号', prop: 'id' },
         { label: '交易时间', prop: 'createTime' },
         { label: '持卡方名称', prop: 'name' },

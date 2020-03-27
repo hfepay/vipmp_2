@@ -61,7 +61,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button @click.stop="edit(scope.row)">
+        <el-button @click.stop="Mixins_$Edit(scope.row)">
           修改
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -75,7 +75,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="1400px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -89,18 +89,18 @@
         <el-row>
           <el-col :span="8">
             <el-form-item label="合同名称：" prop="name">
-              <el-input v-model="dialogForm.name" placeholder="合同名称" :maxlength="50" style="width: 350px" />
+              <el-input v-model="DialogForm.name" placeholder="合同名称" :maxlength="50" style="width: 350px" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="航司名称：" prop="airline">
-              <airline-select v-model="dialogForm.airline" @getObj="initAirLineCode" />
+              <airline-select v-model="DialogForm.airline" @getObj="initAirLineCode" />
             </el-form-item>
           </el-col>
 
           <el-col :span="10">
             <el-form-item label="承租方名称：" prop="lesseeName">
-              <el-input v-model="dialogForm.lesseeName" placeholder="承租方名称" :maxlength="50" />
+              <el-input v-model="DialogForm.lesseeName" placeholder="承租方名称" :maxlength="50" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -108,7 +108,7 @@
           <el-col :span="8">
             <el-form-item label="合同有效期：" prop="timeRange">
               <el-date-picker
-                v-model="dialogForm.timeRange"
+                v-model="DialogForm.timeRange"
                 value-format="yyyy-MM-dd"
                 type="daterange"
                 range-separator="至"
@@ -119,12 +119,12 @@
           </el-col>
           <el-col :span="6">
             <el-form-item label="备注：" prop="remarks">
-              <el-input v-model="dialogForm.remarks" :maxlength="50" placeholder="备注" type="text" />
+              <el-input v-model="DialogForm.remarks" :maxlength="50" placeholder="备注" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="10">
             <el-form-item label="结算方式：" prop="settlementType">
-              <el-input v-model="dialogForm.settlementType" :maxlength="20" placeholder="结算方式" type="text" />
+              <el-input v-model="DialogForm.settlementType" :maxlength="20" placeholder="结算方式" type="text" />
             </el-form-item>
           </el-col>
           <el-col :span="24">
@@ -168,7 +168,7 @@
         <el-row>
           <el-form-item label="是否自动顺延：">
             <el-switch
-              v-model="dialogForm.autoDelay"
+              v-model="DialogForm.autoDelay"
               style="display: inline-block"
               active-value="1"
               inactive-value="0"
@@ -176,7 +176,7 @@
           </el-form-item>
           <el-form-item label="是否清算：">
             <el-switch
-              v-model="dialogForm.liquidation"
+              v-model="DialogForm.liquidation"
               style="display: inline-block"
               active-value="1"
               inactive-value="0"
@@ -186,7 +186,7 @@
           <el-col :span="24">
             <el-form-item label="合同扫描件上传：">
               <base-upload
-                v-model="dialogForm.imgName"
+                v-model="DialogForm.imgName"
                 list-type="picture-card"
                 :file-list="fileList"
               >
@@ -228,7 +228,7 @@ export default {
         remarks: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         settlementType: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      ApiObject: ApiObject,
+      ApiObject,
       airlineOptions: [], // 航空公司下拉框
       autoDelay: true,
       queryParams: {
@@ -251,7 +251,7 @@ export default {
         imgName: []
       },
 
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航司名称', prop: 'airlineName' },
         { label: '备注', prop: 'remarks' },
@@ -269,7 +269,7 @@ export default {
     initAirLineCode(data) {
       this.dialogForm.airCodeThree = data.airCodeThree
     },
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.fileList = []
     },
     async submitDelay() {

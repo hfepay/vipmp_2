@@ -7,7 +7,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="1200px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -28,7 +28,7 @@
           <el-col :span="12">
             <el-form-item label="预约人/单位：" prop="orderBy">
               <reception-search-input
-                v-model="dialogForm.orderBy"
+                v-model="DialogForm.orderBy"
                 :maxlength="30"
                 style="width: 100%"
                 placeholder="请选择接待人/单位"
@@ -37,7 +37,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="联系电话：" prop="contactPhone">
-              <el-input v-model="dialogForm.contactPhone" placeholder="请输入联系电话" :maxlength="11" />
+              <el-input v-model="DialogForm.contactPhone" placeholder="请输入联系电话" :maxlength="11" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -45,7 +45,7 @@
           <el-col :span="12">
             <el-form-item label="预约日期：" prop="appointmentDate">
               <el-date-picker
-                v-model="dialogForm.appointmentDate"
+                v-model="DialogForm.appointmentDate"
                 style="width: 100%"
                 value-format="yyyy-MM-dd"
                 type="date"
@@ -58,7 +58,7 @@
           <el-col :span="12">
             <el-form-item label="时间：" prop="timeRange">
               <base-time-picker
-                v-model="dialogForm.timeRange"
+                v-model="DialogForm.timeRange"
                 :is-range="true"
                 style="width: 100%"
               />
@@ -68,7 +68,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="接送车牌号：" prop="licensePlateNumber">
-              <el-input v-model="dialogForm.licensePlateNumber" :maxlength="30" placeholder="请输入接送车牌号" />
+              <el-input v-model="DialogForm.licensePlateNumber" :maxlength="30" placeholder="请输入接送车牌号" />
             </el-form-item>
           </el-col>
           <!--<el-col :span="12">-->
@@ -82,10 +82,10 @@
         <el-row>
           <el-row>
             <el-form-item label="" prop="jumpFlag" label-width="30px">
-              <el-radio v-model="dialogForm.jumpFlag" :label="0" :disabled="!canAddCabinData" @change="handlerJumpFlagChange">
+              <el-radio v-model="DialogForm.jumpFlag" :label="0" :disabled="!canAddCabinData" @change="handlerJumpFlagChange">
                 两舱服务
               </el-radio>
-              <el-radio v-model="dialogForm.jumpFlag" :label="1" :disabled="!canAddRegistData" @change="handlerJumpFlagChange">
+              <el-radio v-model="DialogForm.jumpFlag" :label="1" :disabled="!canAddRegistData" @change="handlerJumpFlagChange">
                 接待登记
               </el-radio>
             </el-form-item>
@@ -103,70 +103,70 @@
           </el-divider>
           <el-col :span="12">
             <el-form-item label="姓名：" prop="name">
-              <el-input v-model="dialogForm.name" :maxlength="30" placeholder="请输入姓名" />
+              <el-input v-model="DialogForm.name" :maxlength="30" placeholder="请输入姓名" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="身份证号：" prop="idCard">
-              <el-input v-model="dialogForm.idCard" :maxlength="30" placeholder="请输入身份证号" />
+              <el-input v-model="DialogForm.idCard" :maxlength="30" placeholder="请输入身份证号" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
             <el-form-item label="手机号码：" prop="mobile">
-              <el-input v-model="dialogForm.mobile" placeholder="请输入手机号码" :maxlength="11" />
+              <el-input v-model="DialogForm.mobile" placeholder="请输入手机号码" :maxlength="11" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="职务：" prop="job">
-              <el-input v-model="dialogForm.job" :maxlength="30" placeholder="请输入职务" />
+              <el-input v-model="DialogForm.job" :maxlength="30" placeholder="请输入职务" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="登机牌：" prop="boardingPassNum">
-              <el-input v-model="dialogForm.boardingPassNum" :maxlength="30" placeholder="请输入登机牌" />
+              <el-input v-model="DialogForm.boardingPassNum" :maxlength="30" placeholder="请输入登机牌" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="航班号：" prop="flightCode">
-              <el-input v-model="dialogForm.flightCode" :maxlength="30" placeholder="请输入航班号" @input="getFlightInfo" />
+              <el-input v-model="DialogForm.flightCode" :maxlength="30" placeholder="请输入航班号" @input="getFlightInfo" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="出发/到达：" prop="startCity">
-              <el-input v-model="dialogForm.startCity" :maxlength="30" placeholder="请输入出发/到达" />
+              <el-input v-model="DialogForm.startCity" :maxlength="30" placeholder="请输入出发/到达" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="航空公司：" prop="airline">
-              <el-input v-model="dialogForm.airline" :maxlength="30" placeholder="请输入航空公司" />
+              <el-input v-model="DialogForm.airline" :maxlength="30" placeholder="请输入航空公司" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="座位号：" prop="seatNum">
-              <el-input v-model="dialogForm.seatNum" :maxlength="30" placeholder="请输入座位号" />
+              <el-input v-model="DialogForm.seatNum" :maxlength="30" placeholder="请输入座位号" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="舱位：" prop="cabinLevel">
-              <el-input v-model="dialogForm.cabinLevel" :maxlength="30" placeholder="请输入舱位" />
+              <el-input v-model="DialogForm.cabinLevel" :maxlength="30" placeholder="请输入舱位" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="机号：" prop="aircraftCode">
-              <el-input v-model="dialogForm.aircraftCode" :maxlength="30" placeholder="请输入机号" @change="aircraftCodeChange" />
+              <el-input v-model="DialogForm.aircraftCode" :maxlength="30" placeholder="请输入机号" @change="aircraftCodeChange" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="客票号：" prop="ticketNo">
-              <el-input v-model="dialogForm.ticketNo" :maxlength="30" placeholder="请输入客票号" />
+              <el-input v-model="DialogForm.ticketNo" :maxlength="30" placeholder="请输入客票号" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="客户类型：" prop="customerTypeId">
               <el-select
-                v-model="dialogForm.customerTypeId"
+                v-model="DialogForm.customerTypeId"
                 style="width: 100%"
                 clearable
                 placeholder="客户类型"
@@ -183,7 +183,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="结算类型：" prop="settlementTypeId">
-              <el-select v-model="dialogForm.settlementTypeId" style="width: 100%" clearable placeholder="结算类型" @change="settlementTypeIdChange">
+              <el-select v-model="DialogForm.settlementTypeId" style="width: 100%" clearable placeholder="结算类型" @change="settlementTypeIdChange">
                 <el-option
                   v-for="(item, $index) in settlementOptions"
                   :key="$index"
@@ -195,7 +195,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="接待单位：" prop="companyId">
-              <el-select v-if="isBusinessTravel" v-model="dialogForm.companyId" style="width: 100%" clearable placeholder="接待单位" @change="companyIdChange">
+              <el-select v-if="isBusinessTravel" v-model="DialogForm.companyId" style="width: 100%" clearable placeholder="接待单位" @change="companyIdChange">
                 <el-option
                   v-for="(item, $index) in receptUnitOptions"
                   :key="$index"
@@ -203,18 +203,18 @@
                   :value="item.value"
                 />
               </el-select>
-              <el-input v-else v-model="dialogForm.companyName" :maxlength="30" placeholder="请输入接待单位" />
+              <el-input v-else v-model="DialogForm.companyName" :maxlength="30" placeholder="请输入接待单位" />
             </el-form-item>
           </el-col>
           <el-col :span="6">
             <el-form-item label="卡号：" prop="settlementCardNum">
-              <el-input v-model="dialogForm.settlementCardNum" :maxlength="20" placeholder="请输入卡号" />
+              <el-input v-model="DialogForm.settlementCardNum" :maxlength="20" placeholder="请输入卡号" />
             </el-form-item>
           </el-col>
           <el-col v-if="isPPCard" :span="6">
             <el-form-item label="电子记录：" prop="electronicRecord">
               <el-switch
-                v-model="dialogForm.electronicRecord"
+                v-model="DialogForm.electronicRecord"
                 :active-value="1"
                 :inactive-value="0"
               />
@@ -222,13 +222,13 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="签单人：" prop="signer">
-              <el-input v-model="dialogForm.signer" :maxlength="20" placeholder="请输入签单人" />
+              <el-input v-model="DialogForm.signer" :maxlength="20" placeholder="请输入签单人" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="送登机口：" prop="signer">
               <el-switch
-                v-model="dialogForm.deliverDepartureGate"
+                v-model="DialogForm.deliverDepartureGate"
                 :active-value="1"
                 :inactive-value="0"
               />
@@ -245,7 +245,7 @@
             <el-row>
               <el-col :span="12">
                 <el-form-item label="服务类型：" prop="serviceTypeId">
-                  <el-select v-model="dialogForm.serviceTypeId" style="width: 100%" clearable placeholder="服务类型" @change="serviceTypeIdChange">
+                  <el-select v-model="DialogForm.serviceTypeId" style="width: 100%" clearable placeholder="服务类型" @change="serviceTypeIdChange">
                     <el-option
                       v-for="(item, $index) in serviceTypeOptions"
                       :key="$index"
@@ -262,14 +262,14 @@
               </el-col>
               <el-col :span="6">
                 <el-form-item label="总接待人数：" prop="allNum">
-                  <el-input v-model="dialogForm.allNum" type="number" />
+                  <el-input v-model="DialogForm.allNum" type="number" />
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="12">
                 <el-form-item label="其他服务：" prop="otherServiceTypeId">
-                  <el-select v-model="dialogForm.otherServiceTypeId" style="width: 100%" clearable placeholder="其他服务" @change="otherServiceTypeIdChange">
+                  <el-select v-model="DialogForm.otherServiceTypeId" style="width: 100%" clearable placeholder="其他服务" @change="otherServiceTypeIdChange">
                     <el-option
                       v-for="(item, $index) in serviceTypeExtendOptions"
                       :key="$index"
@@ -281,7 +281,7 @@
               </el-col>
               <el-col :span="12">
                 <el-form-item label="其他服务人数：" prop="otherServeNum">
-                  <el-input v-model="dialogForm.otherServeNum" type="number" @change="calcSettleMoney" />
+                  <el-input v-model="DialogForm.otherServeNum" type="number" @change="calcSettleMoney" />
                 </el-form-item>
               </el-col>
             </el-row>
@@ -290,7 +290,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="服务厅房：" :prop="isJJ ? '' : 'hallId'">
-              <el-select v-model="dialogForm.hallId" style="width: 100%" clearable placeholder="服务厅房" @change="hallIdChange">
+              <el-select v-model="DialogForm.hallId" style="width: 100%" clearable placeholder="服务厅房" @change="hallIdChange">
                 <el-option
                   v-for="(item, $index) in hallOptions"
                   :key="$index"
@@ -302,7 +302,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="服务时长：" prop="duration">
-              <el-select v-model="dialogForm.duration" style="width: 100%" clearable placeholder="使用时间">
+              <el-select v-model="DialogForm.duration" style="width: 100%" clearable placeholder="使用时间">
                 <el-option
                   v-for="(item, $index) in $Contants.toOptions($Contants.serviceTimeOptions)"
                   :key="$index"
@@ -316,7 +316,7 @@
         <el-row>
           <el-col :span="12">
             <el-form-item label="服务人员：" prop="waiterId">
-              <el-select v-model="dialogForm.waiterId" style="width: 100%" clearable placeholder="请输入服务人员">
+              <el-select v-model="DialogForm.waiterId" style="width: 100%" clearable placeholder="请输入服务人员">
                 <el-option
                   v-for="(item, $index) in waiterOptions"
                   :key="$index"
@@ -328,7 +328,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="订单金额：" prop="orderAmount">
-              <el-input v-model="dialogForm.orderAmount" disabled type="number" placeholder="请输入订单金额">
+              <el-input v-model="DialogForm.orderAmount" disabled type="number" placeholder="请输入订单金额">
                 <span slot="suffix">
                   元
                 </span>
@@ -337,19 +337,19 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="备注：" prop="content">
-              <el-input v-model="dialogForm.content" :maxlength="100" placeholder="请输入备注" />
+              <el-input v-model="DialogForm.content" :maxlength="100" placeholder="请输入备注" />
             </el-form-item>
           </el-col>
           <template v-if="isRegist">
             <el-col :span="12">
               <el-form-item label="接机牌迎接语：" prop="greeting">
-                <el-input v-model="dialogForm.greeting" :maxlength="30" placeholder="请输入接机牌迎接语" />
+                <el-input v-model="DialogForm.greeting" :maxlength="30" placeholder="请输入接机牌迎接语" />
               </el-form-item>
             </el-col>
           </template>
           <el-col :span="12">
             <el-form-item label="结算金额：" prop="amount">
-              <el-input v-model="dialogForm.amount" type="number" placeholder="请输入结算金额">
+              <el-input v-model="DialogForm.amount" type="number" placeholder="请输入结算金额">
                 <span slot="suffix">
                   元
                 </span>
@@ -360,7 +360,7 @@
             <el-col :span="12">
               <el-form-item label="全流程保障：" prop="ensuranceType">
                 <el-switch
-                  v-model="dialogForm.ensuranceType"
+                  v-model="DialogForm.ensuranceType"
                   :active-value="1"
                   :inactive-value="0"
                 />

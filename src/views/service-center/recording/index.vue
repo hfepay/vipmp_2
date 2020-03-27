@@ -271,7 +271,7 @@ export default {
       customerTypeOptions: [],
       dialogCustomerTypeOptions: [],
       hallOptions: [],
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: {
         name: '',
         deleteFlag: '0',

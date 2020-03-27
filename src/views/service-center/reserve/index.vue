@@ -109,7 +109,7 @@
           <el-button type="danger" @click="cancel(scope.row)">
             取消
           </el-button>
-          <el-button @click.stop="edit(scope.row)">
+          <el-button @click.stop="Mixins_$Edit(scope.row)">
             编辑
           </el-button>
           <el-button type="primary" @click="toRegistPage(scope.row)">
@@ -459,7 +459,7 @@ export default {
       delete data.timeRange
       return data
     },
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.dialogForm.timeRange = ''
       this.dialogForm.people = '1'
       this.dialogForm.accompanyPeople = '0'

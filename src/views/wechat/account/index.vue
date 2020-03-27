@@ -42,8 +42,8 @@ export default {
   data() {
     return {
       timeRangeToCamelCase: true,
-      ApiObject: ApiObject,
-      headers: [
+      ApiObject,
+      Headers: [
         { label: '用户ID', prop: 'userId' },
         // { label: '微信ID', prop: 'wechatId' },
         // { label: '昵称', prop: 'nickName' },

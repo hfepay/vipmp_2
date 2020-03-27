@@ -31,7 +31,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button v-if="scope.row.madeCount == 0" type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -44,20 +44,20 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="发行渠道名称：" prop="channelName">
-          <el-input v-model="dialogForm.channelName" placeholder="渠道名称" />
+          <el-input v-model="DialogForm.channelName" placeholder="渠道名称" />
         </el-form-item>
         <el-form-item label="联系人：" prop="contact">
-          <el-input v-model="dialogForm.contact" placeholder="联系人姓名" />
+          <el-input v-model="DialogForm.contact" placeholder="联系人姓名" />
         </el-form-item>
         <el-form-item label="联系人手机号：" prop="phonenum">
-          <el-input v-model="dialogForm.phonenum" placeholder="联系人手机号" />
+          <el-input v-model="DialogForm.phonenum" placeholder="联系人手机号" />
         </el-form-item>
         <el-form-item label="备注：" prop="remark">
-          <el-input v-model="dialogForm.remark" placeholder="备注" />
+          <el-input v-model="DialogForm.remark" placeholder="备注" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -71,7 +71,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         channelName: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         contact: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
@@ -83,7 +83,7 @@ export default {
         phonenum: '',
         remark: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '发行渠道ID', prop: 'channelCode' },
         { label: '发行渠道名称', prop: 'channelName' },

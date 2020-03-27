@@ -12,7 +12,7 @@
       <template slot="layout-search">
         <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
-            <el-radio-group v-model="queryParams.dictType" @change="handleTypeChange">
+            <el-radio-group v-model="QueryParams.dictType" @change="handleTypeChange">
               <el-radio v-for="(item, $index) in $utils.toOptions($Contants.dictionaryType)" :key="$index" :label="item.value">
                 {{ item.label }}
               </el-radio>
@@ -40,7 +40,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="DialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item :label="`${getTitle}：`" prop="dictName">
@@ -65,8 +65,8 @@ export default {
   props: {},
   data() {
     return {
-      pagination: false,
-      ApiObject: ApiObject,
+      ApiObject,
+      Mixins_QueryItemByRequest: false,
       DialogFormRules: {
         dictName: [{ required: true, message: '必填项不能为空' }],
         orderNum: [{ required: true, message: '必填项不能为空' }],
@@ -77,35 +77,33 @@ export default {
         orderNum: '',
         dictCode: ''
       },
-      headers: [
+      QueryParams: {
+        dictType: '1'
+      },
+      Headers: [
         { type: 'index', label: '序号' },
-        { label: '厅房所在区域', prop: 'dictName' },
+        { label: '厅房区域', prop: 'dictName' },
         { label: '编号', prop: 'dictCode' },
         { label: '排列顺序', prop: 'orderNum' },
         { label: '操作', slot: 'operator', fixed: 'right', width: 180 }
-      ],
-      queryParams: {
-        dictType: '1'
-      }
+      ]
     }
   },
   computed: {
     getTitle() {
-      return this.$Contants.dictionaryType[this.queryParams.dictType]
+      return this.$Contants.dictionaryType[this.QueryParams.dictType]
     }
   },
   methods: {
-    submitBefore() {
-      this.DialogForm.dictType = this.queryParams.dictType
-      return true
+    Mixins_$GetDialogParams(data) {
+      return {
+        ...data,
+        dictType: this.QueryParams.dictType
+      }
     },
     handleTypeChange() {
-      this.headers[1].label = this.getTitle
+      this.Headers[1].label = this.getTitle
       this.Mixins_$Init()
-    },
-    async view(obj) {
-      this.DialogForm = { ...obj }
-      this.dialogVisible = true
     }
   }
 }

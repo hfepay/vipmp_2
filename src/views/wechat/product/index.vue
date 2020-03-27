@@ -59,7 +59,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{ scope }">
-        <el-button @click.stop="edit(scope.row)">
+        <el-button @click.stop="Mixins_$Edit(scope.row)">
           修改
         </el-button>
         <el-button @click.stop="deploy(scope.row)">
@@ -76,7 +76,7 @@
       :visible.sync="Mixins_$DialogVisible"
       width="700px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form
         ref="form"
@@ -88,7 +88,7 @@
       >
         <el-form-item label="所属产品类型：" prop="datadictId">
           <el-select
-            v-model="dialogForm.datadictId"
+            v-model="DialogForm.datadictId"
             filterable
             placeholder="请选择"
             style="width: 100%"
@@ -103,7 +103,7 @@
         </el-form-item>
         <el-form-item label="关联房间：" prop="hallId">
           <el-select
-            v-model="dialogForm.hallId"
+            v-model="DialogForm.hallId"
             filterable
             placeholder="请选择"
             style="width: 100%"
@@ -117,24 +117,24 @@
           </el-select>
         </el-form-item>
         <el-form-item label="产品名称：" prop="productName">
-          <el-input v-model="dialogForm.productName" placeholder="产品名称" />
+          <el-input v-model="DialogForm.productName" placeholder="产品名称" />
         </el-form-item>
         <el-form-item label="属性简介：" prop="propertyBrief">
-          <el-input v-model="dialogForm.propertyBrief" placeholder="属性简介" />
+          <el-input v-model="DialogForm.propertyBrief" placeholder="属性简介" />
         </el-form-item>
         <el-form-item label="价格：" prop="price">
-          <el-input v-model="dialogForm.price" type="number" placeholder="产品价格" />
+          <el-input v-model="DialogForm.price" type="number" placeholder="产品价格" />
         </el-form-item>
         <el-form-item v-if="!dialogForm.id" label="是否立即上架：" prop="deliverIf">
           <el-switch
-            v-model="dialogForm.deliverIf"
+            v-model="DialogForm.deliverIf"
             :active-value="1"
             :inactive-value="0"
           />
         </el-form-item>
         <el-form-item label="位置：" prop="place">
           <el-input
-            v-model="dialogForm.place"
+            v-model="DialogForm.place"
             placeholder="请输入产品所在位置"
           />
         </el-form-item>
@@ -145,11 +145,11 @@
             :gutter="10"
           >
             <el-col :span="10">
-              <el-input v-model="dialogForm.baseProperty[$index].propertyName" :maxlength="4" placeholder="名称" />
+              <el-input v-model="DialogForm.baseProperty[$index].propertyName" :maxlength="4" placeholder="名称" />
             </el-col>
             <el-col :span="10">
               <el-input
-                v-model="dialogForm.baseProperty[$index].propertyContent"
+                v-model="DialogForm.baseProperty[$index].propertyContent"
                 :maxlength="4"
                 placeholder="内容"
               />
@@ -173,25 +173,25 @@
           </el-row>
         </el-form-item>
         <el-form-item label="排序：" prop="sort">
-          <el-input v-model="dialogForm.sort" placeholder="整数" />
+          <el-input v-model="DialogForm.sort" placeholder="整数" />
         </el-form-item>
         <el-form-item label="服务项目：" prop="serviceItem">
           <el-input
-            v-model="dialogForm.serviceItem"
+            v-model="DialogForm.serviceItem"
             type="textarea"
             placeholder="服务项目"
           />
         </el-form-item>
         <el-form-item label="使用规则：" prop="rule">
           <el-input
-            v-model="dialogForm.rule"
+            v-model="DialogForm.rule"
             type="textarea"
             placeholder="使用规则"
           />
         </el-form-item>
         <el-form-item label="图库：" prop="imgName">
           <base-upload
-            v-model="dialogForm.imgName"
+            v-model="DialogForm.imgName"
             list-type="picture-card"
             :limit="3"
             :file-size="2"
@@ -219,7 +219,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       serviceTypeOptions: [], // 服务类型下拉框
       productTypeOptions: [], // 产品类型下拉框
       HallOptions: [],
@@ -256,7 +256,7 @@ export default {
         imgName: [],
         baseProperty: [{}]
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '房间名称', prop: 'roomName' },
         { label: '产品名称', prop: 'productName' },
@@ -297,7 +297,7 @@ export default {
       this.init()
       this.$message.success(result.message)
     },
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.fileList = []
       this.dialogForm.baseProperty = [{}]
       this.dialogForm.stockRule = '0'

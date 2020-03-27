@@ -68,8 +68,8 @@ export default {
   data() {
     return {
       totalCountData: '',
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       businessOptions: [], // 商旅公司下拉框
       totalCountNum: 0,
       totalPpCompanyNum: 0,
@@ -80,7 +80,7 @@ export default {
         timeRange: [],
         companyName: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '日期', prop: 'date' },
         { label: '会员人数', prop: 'ppNum' },

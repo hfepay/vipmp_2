@@ -59,16 +59,16 @@ export default {
     return {
       summaryFields: ['zkNum', 'sxNum'],
       totalData: '',
-      pagination: false,
+      Mixins_Pagination: false,
       timeRangeToCamelCase: true,
-      ApiObject: ApiObject,
+      ApiObject,
       businessOptions: [], // 商旅公司下拉框
       queryParams: {
         date: '',
         timeRange: [],
         companyId: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '日期', prop: 'date' },
         { label: '航班号', prop: 'flightCode' },

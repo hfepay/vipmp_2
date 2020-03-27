@@ -31,7 +31,7 @@ export default {
       }
     }
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       formRules: {
         oldPassword: [{ required: true, validator: validatePassword, trigger: 'blur' }],
         newPassword: [{ required: true, validator: validatePassword, trigger: 'blur' }],

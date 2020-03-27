@@ -37,7 +37,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航班号', prop: 'flightCode' },
         { label: '预计起飞', prop: 'etd' },
@@ -52,7 +52,7 @@ export default {
         { label: '安检通知', prop: 'checkNotify' },
         { label: '安检通知', prop: 'checkArrive' }
       ],
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: {
         flight_date: '',
         flight_code: ''

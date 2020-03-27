@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      headers: [
+      Headers: [
         { CN: '旅客姓名', EN: 'NAME', key: 'name' },
         { CN: '使用厅房', EN: 'ROOM', key: 'hallCN' },
         { CN: '航班号', EN: 'FLT', key: 'flightCode' },

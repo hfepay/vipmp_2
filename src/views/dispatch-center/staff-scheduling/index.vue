@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       pagination: this.page,
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {},
       dialogForm: {
       },

@@ -75,7 +75,7 @@ export default {
         timeRange: '',
         status: ''
       },
-      ApiObject: ApiObject,
+      ApiObject,
       /* 弹窗表头 */
       DialogFormHeaders: [
         { label: '', prop: '' }

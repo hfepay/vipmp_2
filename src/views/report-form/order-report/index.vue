@@ -69,10 +69,10 @@ export default {
   mixins: [Mixins, ReportMixins],
   data() {
     return {
-      pagination: false,
+      Mixins_Pagination: false,
       summaryFields: ['money'],
-      ApiObject: ApiObject,
-      headers: [
+      ApiObject,
+      Headers: [
         // { label: '序号', type: 'index' },
         { label: '费用项目', prop: 'costItems' },
         { label: '金额', prop: 'money' },

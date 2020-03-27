@@ -33,14 +33,14 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="类型：" prop="itemCode">
-          <el-input v-model="dialogForm.itemCode" placeholder="类型" />
+          <el-input v-model="DialogForm.itemCode" placeholder="类型" />
         </el-form-item>
         <el-form-item label="状态：" prop="status">
-          <el-select v-model="dialogForm.status" clearable placeholder="状态">
+          <el-select v-model="DialogForm.status" clearable placeholder="状态">
             <el-option
               v-for="(item, $index) in $Contants.toOptions($Contants.statusConstans)"
               :key="$index"
@@ -61,13 +61,13 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {
         a: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
       dialogForm: {
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航班号', prop: 'flightCode' },
         { label: '预计到达', prop: 'eta' },

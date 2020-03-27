@@ -144,7 +144,7 @@
           <el-col :span="12">
             <el-form-item label="送登机口：" prop="signer">
               <el-switch
-                v-model="dialogForm.deliverDepartureGate"
+                v-model="DialogForm.deliverDepartureGate"
                 disabled
                 :active-value="1"
                 :inactive-value="0"
@@ -232,7 +232,7 @@
             <el-col :span="12">
               <el-form-item label="全流程保障：">
                 <el-switch
-                  v-model="dialogForm.ensuranceType"
+                  v-model="DialogForm.ensuranceType"
                   disabled
                   :active-value="1"
                   :inactive-value="0"

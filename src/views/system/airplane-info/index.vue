@@ -47,11 +47,11 @@ export default {
   props: {},
   data() {
     return {
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {},
       dialogForm: {
       },
-      headers: [
+      Headers: [
         // { label: '序号', type: 'index' },
         { label: '机号', prop: 'code' },
         { label: '机型', prop: 'model' },

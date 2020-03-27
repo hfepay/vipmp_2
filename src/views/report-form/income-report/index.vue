@@ -43,9 +43,9 @@ export default {
     return {
       summaryText: '总计',
       summaryFields: ['subtotalPeople'],
-      pagination: false,
-      ApiObject: ApiObject,
-      headers: [
+      Mixins_Pagination: false,
+      ApiObject,
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '项目单位', prop: 'airline' },
         {

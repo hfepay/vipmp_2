@@ -59,15 +59,15 @@ export default {
     return {
       summaryFields: ['num', 'totalAmount'],
       totalData: '',
-      pagination: false,
+      Mixins_Pagination: false,
       timeRangeToCamelCase: true,
-      ApiObject: ApiObject,
+      ApiObject,
       timeRangeToCamelCase: true,
       queryParams: {
         timeRange: [],
         companyId: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '日期', prop: 'date' },
         { label: '贵宾人数', prop: 'num' },

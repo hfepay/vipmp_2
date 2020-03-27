@@ -61,11 +61,11 @@ export default {
       subtotal: '',
       total: '',
       cumulative: '',
-      ApiObject: ApiObject,
+      ApiObject,
       firstClassAccomCount: '',
       airlineCompanyDialogVisible: false,
-      pagination: false,
-      headers: [
+      Mixins_Pagination: false,
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '日期', prop: 'receptionTime' },
         { label: '航班号', prop: 'flightCode' },

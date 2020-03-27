@@ -35,9 +35,9 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      ApiObject: ApiObject,
-      pagination: false,
-      headers: [
+      ApiObject,
+      Mixins_Pagination: false,
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航班号', prop: 'flightCode' },
         { label: '出港状态', prop: 'departStatusCn' },

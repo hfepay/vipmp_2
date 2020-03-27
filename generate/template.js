@@ -69,7 +69,7 @@ export default {
         timeRange: '',
         status: ''
       },
-      ApiObject: ApiObject,
+      ApiObject,
       /* 弹窗表头 */
       DialogFormHeaders: ${DialogFormHeaders},
       /* 弹窗对象 */

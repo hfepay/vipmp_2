@@ -61,7 +61,7 @@
         <el-button v-else type="primary" @click="deploy(scope.row)">
           发布
         </el-button>
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -74,14 +74,14 @@
       :title="DialogForm['id']?'修改':'新增'"
       :visible.sync="Mixins_$DialogVisible"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="文章标题：" prop="title">
-          <el-input v-model="dialogForm.title" placeholder="文章标题" />
+          <el-input v-model="DialogForm.title" placeholder="文章标题" />
         </el-form-item>
         <el-form-item label="文章位置" prop="place">
-          <el-radio-group v-model="dialogForm.place">
+          <el-radio-group v-model="DialogForm.place">
             <el-radio v-for="(item, $index) in $Contants.toOptions($Contants.placeConstans)" :key="$index" :label="Number(item.value)">
               {{ item.label }}
             </el-radio>
@@ -91,20 +91,20 @@
           <base-upload
             ref="upload"
             :key="dialogForm.imgName"
-            v-model="dialogForm.imgName"
+            v-model="DialogForm.imgName"
             :file-size="2"
             :show-file-list="false"
           />
         </el-form-item>
         <el-form-item v-if="!dialogForm.id" label="是否立即发布：" prop="deliverIf">
           <el-switch
-            v-model="dialogForm.deliverIf"
+            v-model="DialogForm.deliverIf"
             :active-value="1"
             :inactive-value="0"
           />
         </el-form-item>
         <el-form-item label="文章内容" prop="articleContent">
-          <tinymce ref="editor" :key="dialogForm.id" v-model="dialogForm.articleContent" :height="500" />
+          <tinymce ref="editor" :key="dialogForm.id" v-model="DialogForm.articleContent" :height="500" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -121,8 +121,8 @@ export default {
   data() {
     return {
       timeRangeToCamelCase: true,
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       dialogFormRules: {
         title: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         place: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
@@ -137,7 +137,7 @@ export default {
         deliverIf: 0,
         articleContent: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '文章标题', prop: 'title' },
         { label: '位置', prop: 'place', format: this.$Contants.placeConstans },
@@ -179,7 +179,7 @@ export default {
       }
       return params
     },
-    resetAfter() {
+    Mixins_ResetAfter() {
       this.$refs.editor.setContent('')
       this.$refs.upload.clearFiles()
     },

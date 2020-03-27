@@ -46,14 +46,14 @@
       :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="类型：" prop="itemCode">
-          <el-input v-model="dialogForm.itemCode" placeholder="类型" />
+          <el-input v-model="DialogForm.itemCode" placeholder="类型" />
         </el-form-item>
         <el-form-item label="状态：" prop="status">
-          <el-select v-model="dialogForm.status" clearable placeholder="状态">
+          <el-select v-model="DialogForm.status" clearable placeholder="状态">
             <el-option
               v-for="(item, $index) in $Contants.toOptions($Contants.statusConstans)"
               :key="$index"
@@ -74,7 +74,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '姓名', prop: 'name' },
         { label: '性别', prop: 'workerNumber' },
@@ -84,7 +84,7 @@ export default {
         { label: '操作', slot: 'operator' }
       ],
       pagination: this.page,
-      ApiObject: ApiObject,
+      ApiObject,
       dialogFormRules: {},
       dialogForm: {
       },

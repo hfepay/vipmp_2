@@ -16,7 +16,7 @@
       </template>
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
-        <el-button type="primary" @click.stop="edit(scope.row)">
+        <el-button type="primary" @click.stop="Mixins_$Edit(scope.row)">
           编辑
         </el-button>
         <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
@@ -29,20 +29,20 @@
       :visible.sync="Mixins_$DialogVisible"
       width="630px"
       center
-      @closed="reset"
+      @closed="Mixins_$Reset"
     >
       <base-form :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="航空公司全称：" prop="name">
-          <el-input v-model="dialogForm.name" placeholder="请输入航空公司全称" />
+          <el-input v-model="DialogForm.name" placeholder="请输入航空公司全称" />
         </el-form-item>
         <el-form-item label="简称：" prop="shortName">
-          <el-input v-model="dialogForm.shortName" placeholder="请输入简称" />
+          <el-input v-model="DialogForm.shortName" placeholder="请输入简称" />
         </el-form-item>
         <el-form-item label="编码：" prop="code">
-          <el-input v-model="dialogForm.code" placeholder="请输入编码"  :maxlength="3" />
+          <el-input v-model="DialogForm.code" placeholder="请输入编码"  :maxlength="3" />
         </el-form-item>
         <el-form-item label="排列顺序：" prop="orderCode">
-          <el-input v-model="dialogForm.orderCode" type="number" placeholder="请输入排列顺序" />
+          <el-input v-model="DialogForm.orderCode" type="number" placeholder="请输入排列顺序" />
         </el-form-item>
       </base-form>
     </base-dialog>
@@ -57,8 +57,8 @@ export default {
   props: {},
   data() {
     return {
-      pagination: false,
-      ApiObject: ApiObject,
+      Mixins_Pagination: false,
+      ApiObject,
       dialogFormRules: {
         name: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         shortName: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
@@ -74,7 +74,7 @@ export default {
         code: '',
         orderCode: ''
       },
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '航空公司全称', prop: 'name' },
         { label: '简称', prop: 'shortName' },

@@ -94,7 +94,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
-      headers: [
+      Headers: [
         { label: '序号', type: 'index' },
         { label: '任务编号', prop: 'id' },
         { label: '任务类型', prop: 'taskTypeName' },
@@ -115,7 +115,7 @@ export default {
           5: '其他'
         }}
       ],
-      ApiObject: ApiObject,
+      ApiObject,
       queryParams: {
         task_date: '',
         createTime: '',
