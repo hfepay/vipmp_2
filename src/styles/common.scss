@@ -92,7 +92,7 @@ table{
 }
 
 // 固定弹窗高度
-.dialogHeight {
-  height: 85vh;
+.dialogHeight .el-dialog__body {
+  height: calc(85vh - 54px);
   overflow: auto;
 }
