@@ -236,7 +236,7 @@ export default {
         airline: ''
       },
       fileList: [],
-      dialogForm: {
+      DialogForm: {
         name: '',
         airCodeThree: '',
         airline: '',

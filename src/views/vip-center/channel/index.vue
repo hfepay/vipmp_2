@@ -77,7 +77,7 @@ export default {
         contact: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         phonenum: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         channelName: '',
         contact: '',
         phonenum: '',

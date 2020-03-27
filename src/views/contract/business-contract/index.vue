@@ -241,7 +241,7 @@ export default {
         slId: ''
       },
       fileList: [],
-      dialogForm: {
+      DialogForm: {
         contractName: '',
         slId: '',
         timeRange: [],

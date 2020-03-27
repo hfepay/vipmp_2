@@ -49,7 +49,7 @@ export default {
     return {
       ApiObject,
       dialogFormRules: {},
-      dialogForm: {
+      DialogForm: {
       },
       Headers: [
         // { label: '序号', type: 'index' },

@@ -73,7 +73,7 @@ export default {
         airlineCode: [{ required: true, message: '航司二字码不能为空' }],
         airline: [{ required: true, message: '航空公司名称不能为空' }]
       },
-      dialogForm: {
+      DialogForm: {
         airlineCode: '',
         airline: ''
       },

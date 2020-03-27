@@ -227,7 +227,7 @@ export default {
         name: ''
       },
       fileList: [],
-      dialogForm: {
+      DialogForm: {
         datadictId: '',
         deploy: false,
         imgName: [],

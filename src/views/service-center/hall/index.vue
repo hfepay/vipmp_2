@@ -105,7 +105,7 @@ export default {
       customerTypeOptions: [],
       ApiObject,
       dialogFormRules: {},
-      dialogForm: {},
+      DialogForm: {},
       websock: null,
       websocketMsgScheduled: null,
       dispatchDialogForm: {},

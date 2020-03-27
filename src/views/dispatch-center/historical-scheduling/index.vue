@@ -86,7 +86,7 @@ export default {
       pagination: this.page,
       ApiObject,
       dialogFormRules: {},
-      dialogForm: {
+      DialogForm: {
       },
       queryParams: {
         dutyDay: ''

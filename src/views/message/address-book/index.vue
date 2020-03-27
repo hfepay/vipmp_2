@@ -67,7 +67,7 @@ export default {
         name: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         phoneNum: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         phoneNum: '',
         name: ''
       },

@@ -434,7 +434,7 @@ export default {
         { label: '接待登记-登记录入', value: '/serverCenter/regist' },
         { label: '两舱服务-两舱登记', value: '/serverCenter/cabin' }
       ],
-      dialogForm: {
+      DialogForm: {
         registType: '',
         payId: '',
         area: '',

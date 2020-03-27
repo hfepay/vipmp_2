@@ -231,7 +231,7 @@ export default {
       receiptForm: {
         list: []
       },
-      dialogForm: {
+      DialogForm: {
         deliverDepartureGate: '',
         airline: '',
         job: '',

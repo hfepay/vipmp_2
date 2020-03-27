@@ -82,7 +82,7 @@ export default {
         selType: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         financialType: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
       },
-      dialogForm: {
+      DialogForm: {
         datadictId: '',
         selType: '',
         orderNum: '',

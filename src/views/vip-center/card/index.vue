@@ -159,7 +159,7 @@ export default {
         typeName: ''
       },
       fileList: [],
-      dialogForm: {
+      DialogForm: {
         typeName: '',
         value: '',
         validation: 1,

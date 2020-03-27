@@ -136,7 +136,7 @@ export default {
         settlementTypeId: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         selType: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         passengerName: '',
         idCard: '',
         sex: '',

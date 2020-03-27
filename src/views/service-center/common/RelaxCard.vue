@@ -21,7 +21,7 @@ export default {
   name: 'RelaxCard',
   components: {},
   props: {
-    dialogForm: {
+    DialogForm: {
       type: Object,
       required: true
     }

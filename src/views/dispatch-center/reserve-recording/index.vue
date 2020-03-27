@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      dialogForm: {},
+      DialogForm: {},
       options: {}
     }
   },

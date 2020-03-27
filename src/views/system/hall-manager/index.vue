@@ -133,7 +133,7 @@ export default {
         hallCost: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         location: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         hallIf: '',
         roomNumber: '',
         roomName: '',

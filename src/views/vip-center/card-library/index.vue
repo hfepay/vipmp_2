@@ -204,7 +204,7 @@ export default {
       dialogFormRules: {
         a: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
       },
       Headers: [
         { label: '序号', type: 'index' },

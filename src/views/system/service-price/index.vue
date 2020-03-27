@@ -116,7 +116,7 @@ export default {
         serviceDifferent: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         orderNum: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
       },
-      dialogForm: {
+      DialogForm: {
         typeId: '',
         houseId: '',
         price: '',

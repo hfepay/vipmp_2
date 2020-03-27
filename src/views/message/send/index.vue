@@ -177,7 +177,7 @@ export default {
         // passenger: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
       passengerList: [],
-      dialogForm: {
+      DialogForm: {
         templateId: '',
         passenger: [],
         addressBook: []

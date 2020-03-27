@@ -242,7 +242,7 @@ export default {
         rule: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         imgName: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         datadictId: '',
         hallId: '',
         productName: '',

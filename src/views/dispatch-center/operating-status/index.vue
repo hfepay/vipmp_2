@@ -615,7 +615,7 @@ export default {
         securityBookingTime: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         securityArrivedTime: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
       },
-      dialogForm: {// 任务调度
+      DialogForm: {// 任务调度
       },
       pickupDialogForm: {
         serveList: [],

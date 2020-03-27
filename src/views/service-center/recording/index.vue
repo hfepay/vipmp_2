@@ -244,7 +244,7 @@ export default {
       delDialogVisible: false,
       detailDialogVisible: false,
       pageObj: { page: 1, limit: 30, total: 0 }, // page对象
-      dialogForm: {
+      DialogForm: {
         companyId: '', // 接待单位
         serviceTypeCn: '', // 服务类型id
         otherServiceTypeId: '', // 其他服务类型id

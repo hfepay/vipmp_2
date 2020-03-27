@@ -130,7 +130,7 @@ export default {
         deliverIf: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         articleContent: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         title: '',
         place: '',
         imgName: '',

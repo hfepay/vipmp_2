@@ -68,7 +68,7 @@ export default {
         ],
         orderCode: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
       },
-      dialogForm: {
+      DialogForm: {
         name: '',
         shortName: '',
         code: '',

@@ -57,7 +57,7 @@ export default {
         title: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         content: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         title: '',
         content: ''
       },

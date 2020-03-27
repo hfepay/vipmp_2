@@ -104,7 +104,7 @@ export default {
         airlineCode: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         airlineCompany: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         airlineCode: '',
         airlineCompany: '',
         checkedFlightCompanys: []

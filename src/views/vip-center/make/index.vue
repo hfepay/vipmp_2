@@ -105,7 +105,7 @@ export default {
         channelId: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         madeCount: [{ required: true, message: '数量必须为正数', trigger: 'change', type: 'integer' }]
       },
-      dialogForm: {
+      DialogForm: {
         typeId: '',
         channelId: '',
         madeCount: 0

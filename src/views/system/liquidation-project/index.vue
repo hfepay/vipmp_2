@@ -66,7 +66,7 @@ export default {
         prjName: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         prjCode: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         prjName: '',
         prjCode: ''
       },

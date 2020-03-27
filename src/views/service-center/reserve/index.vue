@@ -219,7 +219,7 @@ export default {
         passengerType: [{ required: true, message: '必填项不能为空', trigger: 'change' }],
         orderStatus: [{ required: true, message: '必填项不能为空', trigger: 'change' }]
       },
-      dialogForm: {
+      DialogForm: {
         'id': '',
         'jumpFlag': '',
         'status': '',

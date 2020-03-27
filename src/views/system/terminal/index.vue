@@ -75,7 +75,7 @@ export default {
         teamName: [{ required: true, message: '必填项不能为空', trigger: 'blur' }],
         name: [{ required: true, message: '必填项不能为空', trigger: 'blur' }]
       },
-      dialogForm: {
+      DialogForm: {
         code: '',
         deviceCode: '',
         name: '',
