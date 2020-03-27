@@ -3,16 +3,16 @@
     <!--table模板-->
     <base-table-layout
       v-loading="tableLoading"
-      :page-obj="pageObj"
-      :headers="headers"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
       show-summary
       :summary-method="getSummaries"
-      :pagination="pagination"
+      :pagination="Mixins_Pagination"
       :data="tableData[0]&&tableData[0].list"
     >
-      <span v-if="tableData[0]" class="tableTitle" slot="tableTop">{{tableData[0].startDate + ' -- ' + tableData[0].endDate}}</span>
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <span v-if="tableData[0]" slot="tableTop" class="tableTitle">{{ tableData[0].startDate + ' -- ' + tableData[0].endDate }}</span>
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <base-date-picker
               v-model="queryParams.timeRange"
@@ -38,32 +38,32 @@
     <template v-for="(tableDataItem, index) in tableData">
       <base-table-layout
         v-if="index!==0"
-        :page-obj="pageObj"
-        :headers="headers"
+        :page-obj="Mixins_$PageObj"
+        :headers="Headers"
         show-summary
         :summary-method="getSummaries"
-        :pagination="pagination"
+        :pagination="Mixins_Pagination"
         :data="tableDataItem.list"
       >
-        <span slot="tableTop">{{tableDataItem.startDate + ' -- ' + tableDataItem.endDate}}</span>
+        <span slot="tableTop">{{ tableDataItem.startDate + ' -- ' + tableDataItem.endDate }}</span>
       </base-table-layout>
     </template>
     <flight-company-search-dialog
-      @init="init"
-      :checkedFlightCompanys.sync="queryParams.checkedFlightCompanys"
-      :airlineCode2.sync="queryParams.airlineCode2"
+      :checked-flight-companys.sync="queryParams.checkedFlightCompanys"
+      :airline-code2.sync="queryParams.airlineCode2"
       :visible.sync="airlineCompanyDialogVisible"
+      @init="init"
       @closed="airlineCompanyDialogVisible = false"
     />
   </div>
 </template>
 
 <script>
-import { Mixins } from '@/mixins/mixins';
-import ApiObject from '../../../api/module/beTrade/BeTradeReportApi';
-import AirlineSelect from '../../common/select/AirlineSelect';
-import ReportMixins from '../report-mixins';
-import FlightCompanySearchDialog from '../FlightCompanySearchDialog';
+import { Mixins } from '@/mixins/mixins'
+import ApiObject from '../../../api/module/beTrade/BeTradeReportApi'
+import AirlineSelect from '../../common/select/AirlineSelect'
+import ReportMixins from '../report-mixins'
+import FlightCompanySearchDialog from '../FlightCompanySearchDialog'
 
 export default {
   name: 'FirstClass',
@@ -88,15 +88,15 @@ export default {
         { label: '标准', prop: 'standardPrice' },
         { label: '金额', prop: 'totalAmount' }
       ]
-    };
+    }
   },
 
   computed: {
     listApi() {
-      return this.ApiObject.cabinSummary;
+      return this.ApiObject.cabinSummary
     },
     exportApi() {
-      return this.ApiObject.cabinSummaryExport;
+      return this.ApiObject.cabinSummaryExport
     }
   },
 
@@ -110,7 +110,7 @@ export default {
     }
   }
 
-};
+}
 
 </script>
 

@@ -47,7 +47,7 @@
         </el-button>
       </template>
     </base-table-layout>
-    <order-dialog :visible.sync="Mixins_$DialogVisible"/>
+    <order-dialog :visible.sync="Mixins_$DialogVisible" />
   </div>
 </template>
 <script>

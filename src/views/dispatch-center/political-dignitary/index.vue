@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <el-date-picker
               v-model="queryParams.flight_date"
@@ -42,19 +42,19 @@ export default {
         { label: '登机口', prop: 'boardingGate' },
         { label: '总人数', prop: 'headcount' },
         { label: '开始', prop: 'serviceStart', width: '120px' },
-        { label: '厅房准备', prop: 'loungeReady',  width: '120px' },
-        { label: '信息核对', prop: 'infoConfirm',  width: '120px' },
-        { label: '安检预约', prop: 'secureNotify',  width: '120px' },
+        { label: '厅房准备', prop: 'loungeReady', width: '120px' },
+        { label: '信息核对', prop: 'infoConfirm', width: '120px' },
+        { label: '安检预约', prop: 'secureNotify', width: '120px' },
         { label: '安检到达', prop: 'secureArrive' },
-        { label: '保安预约', prop: 'terminalDoor1',  width: '120px' },
+        { label: '保安预约', prop: 'terminalDoor1', width: '120px' },
         { label: '保安到达', prop: 'terminalDoor2' },
-        { label: '监护预约', prop: 'survilnNotify',  width: '120px' },
+        { label: '监护预约', prop: 'survilnNotify', width: '120px' },
         { label: '监护到达', prop: 'survilnArrive' },
-        { label: '行李搬运预约', prop: 'lungageAppoint',  width: '120px' },
+        { label: '行李搬运预约', prop: 'lungageAppoint', width: '120px' },
         { label: '行李搬运到达', prop: 'lungageArrive', width: '120px' },
-        { label: '车辆预约', prop: 'carAppoint',  width: '120px' },
+        { label: '车辆预约', prop: 'carAppoint', width: '120px' },
         { label: '车辆到达', prop: 'carArrive' },
-        { label: '登机完成预约', prop: 'boardingNotify',  width: '120px' },
+        { label: '登机完成预约', prop: 'boardingNotify', width: '120px' },
         { label: '登机完成到达', prop: 'boardingConfirm' }
         // { label: '分配手持', prop: 'assignHandset' },
       ],

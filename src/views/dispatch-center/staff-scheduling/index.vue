@@ -2,15 +2,15 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :pagination="pagination"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :pagination="Mixins_Pagination"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <template v-if="!isHistoryPage">
               {{ queryParams.dutyDay }}
@@ -26,7 +26,7 @@
           </el-form-item>
         </base-form>
       </template>
-      <template slot="top-right">
+      <template slot="layout-operate">
         <template v-if="!isHistoryPage">
           <el-link type="primary" style="margin-right: 10px" @click="toHistoryPage">
             历史排班记录

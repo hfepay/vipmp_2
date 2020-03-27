@@ -86,15 +86,15 @@
           <!--table模板-->
           <base-table-layout
             :pagination="false"
-            :page-obj="pageObj"
+            :page-obj="Mixins_$PageObj"
             :headers="dispatchStatJobHeaders"
             :data="overallList"
             @row-click="showWork"
           >
             <template slot="table">
               <base-table
-                @row-click="showWork"
                 :data="overallList"
+                @row-click="showWork"
               >
                 <el-table-column
                   type="index"
@@ -288,7 +288,7 @@
       </base-form>
     </base-dialog>
     <!--发起调度弹窗-->
-    <dispatch-dialog v-model="dialogForm" :dialog-visible="dialogVisible" @closed="dialogVisible = false" />
+    <dispatch-dialog v-model="DialogForm" :dialog-visible="dialogVisible" @closed="Mixins_$DialogVisible = false" />
     <!--作业状态弹窗-->
     <base-dialog
       title="作业状态"

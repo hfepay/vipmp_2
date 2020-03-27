@@ -3,8 +3,8 @@
   <div>
     <!--弹窗内容-->
     <base-dialog
-      :title="dialogForm['id']?'修改':'新增'"
-      :visible.sync="dialogVisible"
+      :title="DialogForm['id']?'修改':'新增'"
+      :visible.sync="Mixins_$DialogVisible"
       width="1200px"
       center
       @closed="reset"
@@ -14,10 +14,10 @@
         :validate-on-rule-change="false"
         :disabled="dialogForm.secReviewStatus == 1"
         :show-default-foot="dialogForm._operate != 'show'"
-        :model="dialogForm"
+        :model="DialogForm"
         :rules="dialogFormRules"
         label-width="120px"
-        @submit="submit"
+        @submit="Mixins_$Submit"
         @cancel="cancel"
       >
         <!--预约信息  begin-->
@@ -381,7 +381,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="2">
-              <el-button v-if="canAddAccompany" type="primary" @click="addAccompany">
+              <el-button v-if="canAddAccompany" type="primary" @click="Mixins_$AddAccompany">
                 新增人员
               </el-button>
             </el-col>

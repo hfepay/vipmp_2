@@ -1,7 +1,7 @@
 import BaseApi from '../../base/BaseApi'
 class AccountApi extends BaseApi {
   constructor(entity) {
-    super('account', entity)
+    super('vipmp2-account', entity)
   }
 }
 

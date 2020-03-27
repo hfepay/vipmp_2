@@ -3,17 +3,17 @@
     <!--table模板-->
     <base-table-layout
       v-loading="tableLoading"
-      :page-obj="pageObj"
-      :headers="headers"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
       max-height="500"
-      :pagination="pagination"
-      :data="tableData"
-      @sizeChange="sizeChange"
+      :pagination="Mixins_Pagination"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
       @selection-change="handleSelectionChange"
-      @currentChange="currentChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item> <el-input v-model="queryParams.name" placeholder="旅客姓名" /> </el-form-item>
           <el-form-item> <el-input v-model="queryParams.flightCode" placeholder="航班" /> </el-form-item>
           <el-form-item> <el-input v-model="queryParams.company" placeholder="航空公司" /> </el-form-item>
@@ -108,7 +108,7 @@
           </template>
         </base-form>
       </template>
-      <template slot="top-right" />
+      <template slot="layout-operate" />
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
         <template v-if="scope.row.deleteFlag == 0">
@@ -134,22 +134,22 @@
       </template>
     </base-table-layout>
     <update-dialog
-      v-model="dialogForm"
+      v-model="DialogForm"
       page="reserve"
       :customer-type-options="dialogCustomerTypeOptions"
       :hall-options="hallOptions"
       :dialog-visible="dialogVisible"
-      @submit="submit"
+      @submit="Mixins_$Submit"
       @closed="handleClosed"
     />
     <update-dialog-text
       :key="detailDialogVisible"
-      :dialog-form="dialogForm"
+      :dialog-form="DialogForm"
       page="reserve-detail"
       :customer-type-options="customerTypeOptions"
       :hall-options="hallOptions"
       :dialog-visible="detailDialogVisible"
-      @submit="submit"
+      @submit="Mixins_$Submit"
       @closed="detailDialogVisible = false"
     >
       <template #footer>
@@ -357,14 +357,14 @@ export default {
       fn && fn()
     },
     handleClosed() {
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.reset()
     },
     async submit() {
       const data = this.getDialogFormParams()
       const result = (data.type == 1 ? await CabinApi.update(data) : await ReceptionApi.update(data))
       this.$message.success(result.message)
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.init()
     },
     async initDialogCustomerTypeOptions(obj) {

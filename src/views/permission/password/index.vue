@@ -1,5 +1,5 @@
 <template>
-  <base-form :model="form" :show-cancel="false" :rules="formRules" label-width="120px" style="width: 600px" @submit="submit">
+  <base-form :model="form" :show-cancel="false" :rules="formRules" label-width="120px" style="width: 600px" @submit="Mixins_$Submit">
     <el-form-item label="登录账号：">
       {{ userInfo.account }}
     </el-form-item>

@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <el-date-picker
               v-model="queryParams.timeRange"
@@ -75,13 +75,13 @@
           </el-button>
         </base-form>
       </template>
-      <template v-if="!isHistoryPage" slot="top-right">
+      <template v-if="!isHistoryPage" slot="layout-operate">
         <router-link to="/serverCenter/reserveHistory">
           <el-link type="primary" style="margin-right: 10px;line-height: 28px">
             预约历史记录
           </el-link>
         </router-link>
-        <el-button v-if="!isDispatchCenterPage" type="primary" @click="add">
+        <el-button v-if="!isDispatchCenterPage" type="primary" @click="Mixins_$Add">
           新增
         </el-button>
       </template>
@@ -121,19 +121,19 @@
     <update-dialog-text
       v-if="isHistoryPage"
       type="reserve-detail"
-      :dialog-form="dialogForm"
+      :dialog-form="DialogForm"
       :dialog-visible="dialogVisible"
       @closed="handleClosed"
     />
     <reserve-update-dialog
       v-else
-      v-model="dialogForm"
+      v-model="DialogForm"
       :can-add-regist-data="canAddRegistData"
       :can-add-cabin-data="canAddCabinData"
       :customer-type-options="customerOptions"
       :hall-options="hallOptions"
       :dialog-visible="dialogVisible"
-      @submit="submit"
+      @submit="Mixins_$Submit"
       @closed="handleClosed"
     />
   </div>
@@ -380,7 +380,7 @@ export default {
       return flag
     },
     handleClosed() {
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.reset()
     },
     delAccompany(index) {

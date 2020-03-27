@@ -4,12 +4,12 @@
     <!--弹窗内容-->
     <base-dialog
       title="详情"
-      :visible.sync="dialogVisible"
+      :visible.sync="Mixins_$DialogVisible"
       width="1200px"
       center
       @closed="$emit('closed')"
     >
-      <base-form ref="form" :model="dialogForm" label-width="120px" :show-default-foot="false">
+      <base-form ref="form" :model="DialogForm" label-width="120px" :show-default-foot="false">
         <!--预约信息  begin-->
         <template v-if="isReserveDetail">
           <el-row>
@@ -165,82 +165,81 @@
           <el-divider content-position="left">
             <span class="dialog-form-title">服务信息</span>
           </el-divider>
-            <template v-if="isRegist">
-              <el-col :span="12">
-                <el-form-item label="服务类型：" prop="serviceTypeId">
-                  {{ dialogForm.serviceTypeCN }}
-                </el-form-item>
-              </el-col>
-              <el-col :span="6">
-                <el-form-item label="接待人数：">
-                  {{ dialogForm.serveNum }}
-                </el-form-item>
-              </el-col>
-              <el-col :span="6">
-                <el-form-item label="总接待人数：">
-                  {{ dialogForm.allNum }}
-                </el-form-item>
-              </el-col>
-              <el-col :span="12">
-                <el-form-item label="其他服务：" prop="otherServiceTypeId">
-                  {{ dialogForm.otherServiceTypeCN }}
-                </el-form-item>
-              </el-col>
-              <el-col :span="12">
-                <el-form-item label="其他服务人数：">
-                  {{ dialogForm.otherServeNum }}
-                </el-form-item>
-              </el-col>
-            </template>
+          <template v-if="isRegist">
             <el-col :span="12">
-              <el-form-item label="服务厅房：" prop="hallId">
-                {{ dialogForm.hallCN }}
+              <el-form-item label="服务类型：" prop="serviceTypeId">
+                {{ dialogForm.serviceTypeCN }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="接待人数：">
+                {{ dialogForm.serveNum }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="6">
+              <el-form-item label="总接待人数：">
+                {{ dialogForm.allNum }}
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="服务时长：" prop="duration">
-                {{ dialogForm.duration || '-' }}小时
+              <el-form-item label="其他服务：" prop="otherServiceTypeId">
+                {{ dialogForm.otherServiceTypeCN }}
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="服务人员：" prop="waiterId">
-                {{ dialogForm.waiterCN }}
+              <el-form-item label="其他服务人数：">
+                {{ dialogForm.otherServeNum }}
               </el-form-item>
             </el-col>
-            <el-col :span="12">
-              <el-form-item label="订单金额：" prop="orderAmount">
-                {{ dialogForm.orderAmount }}元
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="备注：" prop="content">
-                {{ dialogForm.content }}
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="结算金额：" prop="amount">
-                {{ dialogForm.amount }}元
-              </el-form-item>
-            </el-col>
+          </template>
+          <el-col :span="12">
+            <el-form-item label="服务厅房：" prop="hallId">
+              {{ dialogForm.hallCN }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="服务时长：" prop="duration">
+              {{ dialogForm.duration || '-' }}小时
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="服务人员：" prop="waiterId">
+              {{ dialogForm.waiterCN }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="订单金额：" prop="orderAmount">
+              {{ dialogForm.orderAmount }}元
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="备注：" prop="content">
+              {{ dialogForm.content }}
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="结算金额：" prop="amount">
+              {{ dialogForm.amount }}元
+            </el-form-item>
+          </el-col>
 
-            <template v-if="isRegist">
-              <el-col :span="12">
-                <el-form-item label="迎接语：" prop="greeting">
-                  {{ dialogForm.greeting }}
-                </el-form-item>
-              </el-col>
-              <el-col :span="12">
-                <el-form-item label="全流程保障：">
-                  <el-switch
-                    v-model="dialogForm.ensuranceType"
-                    disabled
-                    :active-value="1"
-                    :inactive-value="0"
-                  />
-                </el-form-item>
-              </el-col>
-            </template>
-
+          <template v-if="isRegist">
+            <el-col :span="12">
+              <el-form-item label="迎接语：" prop="greeting">
+                {{ dialogForm.greeting }}
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="全流程保障：">
+                <el-switch
+                  v-model="dialogForm.ensuranceType"
+                  disabled
+                  :active-value="1"
+                  :inactive-value="0"
+                />
+              </el-form-item>
+            </el-col>
+          </template>
         </el-row>
         <!--服务信息 end-->
         <!--随行信息 begin-->

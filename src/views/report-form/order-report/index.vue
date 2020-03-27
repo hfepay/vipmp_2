@@ -3,17 +3,17 @@
     <!--table模板-->
     <base-table-layout
       v-loading="tableLoading"
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      :pagination="pagination"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      :pagination="Mixins_Pagination"
       show-summary
       :summary-method="getSummaries"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <base-date-picker
               v-model="queryParams.date"
@@ -37,13 +37,13 @@
       </template>
       <template slot="table">
         <base-table
-          style="margin-bottom: 50px"
           v-for="(table, $index) in tableData"
+          :key="$index"
+          style="margin-bottom: 50px"
           show-summary
           :summary-method="getSummaries"
-          :key="$index"
           :data="table.list"
-          :headers="headers"
+          :headers="Headers"
         />
       </template>
     </base-table-layout>

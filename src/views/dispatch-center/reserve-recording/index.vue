@@ -1,7 +1,7 @@
 <template>
   <div>
     <reserve type="dispatch-center" @dispatch="dispatch" />
-    <dispatch-dialog v-model="dialogForm" :dialog-visible="dialogVisible" @closed="dialogVisible = false" />
+    <dispatch-dialog v-model="DialogForm" :dialog-visible="dialogVisible" @closed="Mixins_$DialogVisible = false" />
   </div>
 </template>
 <script>

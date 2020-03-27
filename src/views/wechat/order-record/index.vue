@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="订单号：">
             <el-input v-model="queryParams.id" placeholder="请输入订单号" />
           </el-form-item>
@@ -145,12 +145,12 @@
     <!--查看弹窗-->
     <base-dialog
       :title="dialogForm.operateType === 'regist'? '接待登记': '查看'"
-      :visible.sync="dialogVisible"
+      :visible.sync="Mixins_$DialogVisible"
       width="900px"
       center
       @closed="reset"
     >
-      <base-form :model="dialogForm" :rules="dialogFormRules" :show-default-foot="dialogForm.operateType === 'regist'" confirm-btn-text="接待登记" label-width="120px" @submit="toRegistPage" @cancel="dialogVisible = false">
+      <base-form :model="DialogForm" :rules="dialogFormRules" :show-default-foot="dialogForm.operateType === 'regist'" confirm-btn-text="接待登记" label-width="120px" @submit="toRegistPage" @cancel="Mixins_$DialogVisible = false">
         <el-row>
           <el-col :span="12">
             <el-form-item label="订单号：">
@@ -499,7 +499,7 @@ export default {
   },
   methods: {
     toRegistPage() {
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.$router.push({ path: `${this.dialogForm.registType}?reserveId=${this.dialogForm.id}&origin=order` })
     },
     async regist(obj) {

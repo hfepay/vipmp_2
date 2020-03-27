@@ -25,8 +25,6 @@ setTimeout(_ => {
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  next()
-  return
   if (store.getters.token) {
     if (freshFlag) {
       // 如果是刷新

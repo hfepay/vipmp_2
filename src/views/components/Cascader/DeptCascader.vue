@@ -4,7 +4,8 @@
     <el-cascader
       :options="options"
       :props="{ checkStrictly: true }"
-      clearable></el-cascader>
+      clearable
+    />
   </div>
 </template>
 

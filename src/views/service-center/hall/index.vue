@@ -2,16 +2,16 @@
   <div v-loading="loading" class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
       :row-class-name="tableRowClassName"
-      :pagination="pagination"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :pagination="Mixins_Pagination"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="当前厅房：">
             <el-select v-model="queryParams.hall_id" clearable placeholder="请选择所在厅房" @change="hallIdChange">
               <el-option
@@ -33,7 +33,7 @@
           </el-button>
         </base-form>
       </template>
-      <template slot="top-right" />
+      <template slot="layout-operate" />
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
         <el-button type="warning" @click="printRelaxCard(scope.row)">
@@ -53,7 +53,7 @@
         </el-button>
       </template>
     </base-table-layout>
-    <update-dialog-text :dialog-form="dialogForm" :dialog-visible="dialogVisible" @closed="handleClosed" />
+    <update-dialog-text :dialog-form="DialogForm" :dialog-visible="dialogVisible" @closed="handleClosed" />
     <!--调度-->
     <dispatch-dialog v-model="dispatchDialogForm" task-type="taskType" :dialog-visible="dispatchDialogVisible" @closed="dispatchDialogVisible = false" />
     <!--推送提示信息-->
@@ -72,7 +72,7 @@
       </el-card>
     </div>
     <div ref="relax-card" class="print-container">
-      <relax-card :dialog-form="dialogForm" />
+      <relax-card :dialog-form="DialogForm" />
     </div>
   </div>
 </template>
@@ -242,7 +242,7 @@ export default {
       return (Math.random() + '').substring(2, 6)
     },
     handleClosed() {
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.reset()
     },
     async leave(obj) {

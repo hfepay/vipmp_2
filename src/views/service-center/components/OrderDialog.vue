@@ -11,7 +11,7 @@
         :model.sync="form"
         :inline="true"
         :rules="rules"
-        @submit="submit"
+        @submit="Mixins_$Submit"
         @cancel="cancel"
       >
         <!--      客户信息-->
@@ -125,7 +125,7 @@
           <el-button
             style="width: 100%;margin-top: 20px"
             type="primary"
-            @click="addService"
+            @click="Mixins_$AddService"
           >
             新增服务
           </el-button>
@@ -154,10 +154,10 @@
         <!--      结算信息-->
         <el-card header="结算信息">
           <el-form-item label="合同总金额(元)">
-            <base-input disabled/>
+            <base-input disabled />
           </el-form-item>
           <el-form-item label="结算总金额(元)">
-            <base-input disabled/>
+            <base-input disabled />
           </el-form-item>
           <el-form-item label="优惠方式">
             <base-select v-model="form.a" :list="offerTypeList" />
@@ -166,10 +166,10 @@
             <base-input v-model="form.b" :disabled="!form.a" />
           </el-form-item>
           <el-form-item label="订单金额(元)">
-            <base-input disabled/>
+            <base-input disabled />
           </el-form-item>
-          <el-form-item  label="说明">
-            <base-input v-model="form.name" type="textarea"/>
+          <el-form-item label="说明">
+            <base-input v-model="form.name" type="textarea" />
           </el-form-item>
         </el-card>
       </base-form>
@@ -182,7 +182,7 @@
     >
       <base-input placeholder="扫描登机牌" style="width: 300px;margin-bottom: 20px">
         <template slot="append">
-          <el-button type="primary" @click="addPassenger">
+          <el-button type="primary" @click="Mixins_$AddPassenger">
             新增旅客
           </el-button>
         </template>

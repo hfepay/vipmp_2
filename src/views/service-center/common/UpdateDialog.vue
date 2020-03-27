@@ -3,8 +3,8 @@
   <div>
     <!--弹窗内容-->
     <base-dialog
-      :title="dialogForm['id']?'修改':'新增'"
-      :visible.sync="dialogVisible"
+      :title="DialogForm['id']?'修改':'新增'"
+      :visible.sync="Mixins_$DialogVisible"
       width="1200px"
       center
       @closed="reset"
@@ -13,10 +13,10 @@
         ref="form"
         :validate-on-rule-change="false"
         :disabled="dialogForm.secReviewStatus == 1 || dialogForm._operate == 'show'"
-        :model="dialogForm"
+        :model="DialogForm"
         :rules="dialogFormRules"
         label-width="120px"
-        @submit="submit"
+        @submit="Mixins_$Submit"
         @cancel="cancel"
       >
         <!--旅客信息  begin-->
@@ -331,7 +331,7 @@
               </el-form-item>
             </el-col>
             <el-col :span="2">
-              <el-button v-if="canAddAccompany" type="primary" @click="addAccompany">
+              <el-button v-if="canAddAccompany" type="primary" @click="Mixins_$AddAccompany">
                 新增人员
               </el-button>
             </el-col>
@@ -398,7 +398,7 @@
     </base-dialog>
     <!--休息卡-->
     <div ref="relax-card" class="print-container">
-      <relax-card :dialog-form="dialogForm" />
+      <relax-card :dialog-form="DialogForm" />
     </div>
     <!--珠海机场会员卡支付弹窗-->
     <base-dialog

@@ -2,16 +2,16 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
+      <template slot="layout-search">
         <base-form
           :inline="true"
-          :model="queryParams"
+          :model="QueryParams"
           :show-default-foot="false"
         >
           <!--  <el-form-item label="房间编号：">
@@ -49,8 +49,8 @@
           </el-button>
         </base-form>
       </template>
-      <template slot="top-right">
-        <el-button type="primary" @click="add">
+      <template slot="layout-operate">
+        <el-button type="primary" @click="Mixins_$Add">
           新增
         </el-button>
       </template>
@@ -65,7 +65,7 @@
         <el-button @click.stop="deploy(scope.row)">
           {{ getDeployText(scope.row.productStatus) }}
         </el-button>
-        <el-button type="danger" @click.stop="del(scope.row)">
+        <el-button type="danger" @click.stop="Mixins_$Del(scope.row)">
           删除
         </el-button>
       </template>
@@ -73,18 +73,18 @@
 
     <base-dialog
       :title="dialogForm['id'] ? '修改' : '新增'"
-      :visible.sync="dialogVisible"
+      :visible.sync="Mixins_$DialogVisible"
       width="700px"
       center
       @closed="reset"
     >
       <base-form
         ref="form"
-        :model="dialogForm"
+        :model="DialogForm"
         :rules="dialogFormRules"
         label-width="150px"
-        @submit="submit"
-        @cancel="dialogVisible = false"
+        @submit="Mixins_$Submit"
+        @cancel="Mixins_$DialogVisible = false"
       >
         <el-form-item label="所属产品类型：" prop="datadictId">
           <el-select
@@ -158,7 +158,7 @@
               <el-button
                 v-if="$index === 0 && dialogForm.baseProperty.length < 10"
                 type="primary"
-                @click="addAccompany"
+                @click="Mixins_$AddAccompany"
               >
                 新增
               </el-button>

@@ -2,8 +2,8 @@
 1. 页面介绍
 + 插槽
 ```
-<template slot="top-left">搜索条件插槽</template>
-<template slot="top-right">页面右上角按钮插槽</template>
+<template slot="layout-search">搜索条件插槽</template>
+<template slot="layout-operate">页面右上角按钮插槽</template>
 ```
 2. data常用参数配置介绍
 + headers：表头(默认:[])

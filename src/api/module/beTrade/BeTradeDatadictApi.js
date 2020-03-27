@@ -11,7 +11,7 @@ class BeTradeDatadictApi extends BeTradeApi {
   }
   async getOptionsNameByType(type) {
     const data = await this.getOptionsByType(type)
-    return  super.toOptions(data, { label:'label',value : 'label' })
+    return super.toOptions(data, { label: 'label', value: 'label' })
   }
   async getOptionsByTypeWithoutBJD(type) { // 根据类型查找
     const res = await this.getOptionsByType(type, { 'bjd': 1 })

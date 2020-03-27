@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="卡种ID：">
             <el-input v-model="queryParams.typeCode" placeholder="按卡种ID查询" />
           </el-form-item>
@@ -25,8 +25,8 @@
           </el-button>
         </base-form>
       </template>
-      <template slot="top-right">
-        <el-button type="primary" @click="add">
+      <template slot="layout-operate">
+        <el-button type="primary" @click="Mixins_$Add">
           新增
         </el-button>
       </template>
@@ -42,10 +42,10 @@
         <el-button type="primary" @click.stop="show(scope.row)">
           查看
         </el-button>
-        <el-button type="primary" v-if="scope.row.madeCount == 0" @click.stop="edit(scope.row)">
+        <el-button v-if="scope.row.madeCount == 0" type="primary" @click.stop="edit(scope.row)">
           编辑
         </el-button>
-        <el-button type="danger" v-if="scope.row.madeCount == 0" @click.stop="del(scope.row)">
+        <el-button v-if="scope.row.madeCount == 0" type="danger" @click.stop="Mixins_$Del(scope.row)">
           删除
         </el-button>
       </template>
@@ -53,7 +53,7 @@
 
     <base-dialog
       :title="dialogForm['id']?dialogForm._operate === 'show'?'查看':'修改':'新增'"
-      :visible.sync="dialogVisible"
+      :visible.sync="Mixins_$DialogVisible"
       width="600px"
       center
       @closed="reset"
@@ -61,11 +61,11 @@
       <base-form
         ref="form"
         :disabled="dialogForm._operate === 'show'"
-        :model="dialogForm"
+        :model="DialogForm"
         :rules="dialogFormRules"
         label-width="170px"
-        @submit="submit"
-        @cancel="dialogVisible = false"
+        @submit="Mixins_$Submit"
+        @cancel="Mixins_$DialogVisible = false"
       >
         <el-row>
           <el-col :span="24">

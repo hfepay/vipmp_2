@@ -2,12 +2,12 @@
   <!--发起调度弹窗-->
   <base-dialog
     title="调度"
-    :visible.sync="dialogVisible"
+    :visible.sync="Mixins_$DialogVisible"
     width="800px"
     center
     @closed="reset"
   >
-    <base-form ref="form" :model="dialogForm" :rules="dialogFormRules" label-width="130px" @submit="submit" @cancel="$emit('closed')">
+    <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="130px" @submit="Mixins_$Submit" @cancel="$emit('closed')">
       <el-row>
         <el-col :span="12">
           <el-form-item v-if="dialogForm.jobFlag" label="全流程保障：" prop="jobFlag">

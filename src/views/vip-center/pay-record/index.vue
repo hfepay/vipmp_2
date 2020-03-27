@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="交易订单号：">
             <el-input v-model="queryParams.id" placeholder="请输入交易订单号" />
           </el-form-item>
@@ -78,7 +78,7 @@
           </el-button>
         </base-form>
       </template>
-      <template slot="top-right" />
+      <template slot="layout-operate" />
       <!--操作-->
       <template slot="operator" slot-scope="{scope}">
         <!--0未进行退款操作，显示退款按钮   1进行过退款操作，显示已退款-->

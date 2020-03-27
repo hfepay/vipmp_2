@@ -3,7 +3,7 @@
     <el-button :style="{background:color,borderColor:color}" icon="el-icon-upload" size="mini" type="primary" @click=" dialogVisible=true">
       上传图片
     </el-button>
-    <base-dialog :visible.sync="dialogVisible" :append-to-body="true">
+    <base-dialog :visible.sync="Mixins_$DialogVisible" :append-to-body="true">
       <base-upload
         :multiple="true"
         :file-list="fileList"
@@ -19,7 +19,7 @@
           点击上传
         </el-button>
       </base-upload>
-      <el-button @click="dialogVisible = false">
+      <el-button @click="Mixins_$DialogVisible = false">
         取 消
       </el-button>
       <el-button type="primary" @click="handleSubmit">
@@ -63,7 +63,7 @@ export default {
       this.$emit('successCBK', arr)
       this.listObj = {}
       this.fileList = []
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
     },
     handleSuccess(response, file) {
       const uid = file.uid

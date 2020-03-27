@@ -32,8 +32,7 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: 'http://vipmp.cn/admin',
-        // target: 'http://172.16.42.109:18080',
+        target: 'http://zhair.hfsmrz.cn/vipmp2',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

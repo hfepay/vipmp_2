@@ -31,7 +31,7 @@
         <slot name="tip" />
       </template>
     </el-upload>
-    <el-dialog :visible.sync="dialogVisible" append-to-body>
+    <el-dialog :visible.sync="Mixins_$DialogVisible" append-to-body>
       <img width="100%" :src="dialogImageUrl" alt="">
     </el-dialog>
   </div>

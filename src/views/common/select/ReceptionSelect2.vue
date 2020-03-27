@@ -5,8 +5,9 @@
     :context="ApiObject"
     :api="ApiObject.reportOrgOptions"
     :placeholder="placeholder"
+    :query-params="queryParams"
     v-on="$listeners"
-    :query-params="queryParams"/>
+  />
 </template>
 <script>
 import ApiObject from '../../../api/module/beTrade/BeTradeReceiveOrgApi'

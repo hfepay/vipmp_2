@@ -3,17 +3,17 @@
     <!--table模板-->
     <base-table-layout
       row-key="id"
-      :page-obj="pageObj"
+      :page-obj="Mixins_$PageObj"
       :headers="getHeaders"
-      :data="tableData"
-      :pagination="pagination"
+      :data="Mixins_$TableData"
+      :pagination="Mixins_Pagination"
       :row-class-name="tableRowClassName"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
       @selection-change="handleSelectionChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="当前厅室：">
             <el-select
               v-model="queryParams.hall_id"
@@ -89,9 +89,9 @@
           </el-button>
         </base-form>
       </template>
-      <template slot="top-right">
+      <template slot="layout-operate">
         <el-input ref="scan-code-info-input" v-model="scanCodeInfo" placeholder="请扫码登记旅客" @focus="changeInputtingMethod" @input="scanCodeRegistration" />
-        <el-button type="primary" @click="add">
+        <el-button type="primary" @click="Mixins_$Add">
           新增
         </el-button>
       </template>
@@ -117,7 +117,7 @@
         <el-button type="primary" @click.stop="edit(scope.row)">
           编辑
         </el-button>
-        <!--<el-button type="danger" @click.stop="del(scope.row)" v-if="roles.includes('记录删除')">
+        <!--<el-button type="danger" @click.stop="Mixins_$Del(scope.row)" v-if="roles.includes('记录删除')">
           删除
         </el-button>-->
         <!--主卡才有操作按钮-->
@@ -129,12 +129,12 @@
       </template>
     </base-table-layout>
     <update-dialog
-      v-model="dialogForm"
+      v-model="DialogForm"
       :page="type"
       :customer-type-options="customerTypeOptions"
       :hall-options="hallOptions"
       :dialog-visible="dialogVisible"
-      @submit="submit"
+      @submit="Mixins_$Submit"
       @closed="handleClosed"
     />
     <!--推送提示信息-->
@@ -157,7 +157,7 @@
       <receipt v-for="(form,$index) in receiptPrintData" :key="$index" :dialog-form="form" class="print-full-page" />
     </div>
     <div ref="relax-card" class="print-container">
-      <relax-card :dialog-form="dialogForm" />
+      <relax-card :dialog-form="DialogForm" />
     </div>
   </div>
 </template>
@@ -504,7 +504,7 @@ export default {
       this.websock && this.websock.close()
     },
     handleClosed() {
-      this.dialogVisible = false
+      this.Mixins_$DialogVisible = false
       this.scanCodeInfo = ''
       this.reset()
       this.replaceRouter()

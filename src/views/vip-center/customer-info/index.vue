@@ -2,14 +2,14 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item label="旅客姓名：">
             <el-input v-model="queryParams.passengerName" placeholder="旅客姓名" />
           </el-form-item>
@@ -43,13 +43,13 @@
       </template>
     </base-table-layout>
     <base-dialog
-      :title="dialogForm['id']?'修改':'新增'"
-      :visible.sync="dialogVisible"
+      :title="DialogForm['id']?'修改':'新增'"
+      :visible.sync="Mixins_$DialogVisible"
       width="530px"
       center
       @closed="reset"
     >
-      <base-form ref="form" :model="dialogForm" :rules="dialogFormRules" label-width="120px" @submit="submit" @cancel="dialogVisible = false">
+      <base-form ref="form" :model="DialogForm" :rules="dialogFormRules" label-width="120px" @submit="Mixins_$Submit" @cancel="Mixins_$DialogVisible = false">
         <el-form-item label="旅客姓名：" prop="name">
           <el-input v-model="dialogForm.name" placeholder="旅客姓名" />
         </el-form-item>

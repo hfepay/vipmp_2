@@ -1,5 +1,5 @@
 <template>
-  <base-select v-bind="$attrs" :context="ApiObject" :api="ApiObject.getOptions" :placeholder="placeholder" v-on="$listeners"  :query-params="queryParams"/>
+  <base-select v-bind="$attrs" :context="ApiObject" :api="ApiObject.getOptions" :placeholder="placeholder" :query-params="queryParams" v-on="$listeners" />
 </template>
 <script>
 import ApiObject from '../../../api/module/beTrade/BeTradeReceiveOrgApi'

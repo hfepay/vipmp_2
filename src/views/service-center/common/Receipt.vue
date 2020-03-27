@@ -9,7 +9,7 @@
         单位:{{ dialogForm.name }}
       </div>
       <table border="1" style="margin: 10px 0" cellpadding="5" align="center" valign="middle">
-        <thead >
+        <thead>
           <tr v-for="(head, $index) in headers" :key="$index">
             <th v-for="(row,index) in head.rows" :key="index" :rowspan="row.rowspan" :colspan="row.colspan">
               {{ row.label }}

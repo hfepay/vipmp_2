@@ -3,15 +3,15 @@
     <!--table模板-->
     <base-table-layout
       v-loading="tableLoading"
-      :page-obj="pageObj"
-      :headers="headers"
-      :pagination="pagination"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :pagination="Mixins_Pagination"
       show-summary
       :summary-method="getSummaries"
-      :data="tableData"
+      :data="Mixins_$TableData"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <base-date-picker
               v-model="queryParams.timeRange"

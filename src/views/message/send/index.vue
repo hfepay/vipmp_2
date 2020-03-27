@@ -2,16 +2,16 @@
   <div class="hf-container">
     <!--table模板-->
     <base-table-layout
-      :page-obj="pageObj"
-      :headers="headers"
-      :data="tableData"
-      @sizeChange="sizeChange"
-      @currentChange="currentChange"
+      :page-obj="Mixins_$PageObj"
+      :headers="Headers"
+      :data="Mixins_$TableData"
+      @sizeChange="Mixins_$SizeChange"
+      @currentChange="Mixins_$CurrentChange"
     >
-      <template slot="top-left">
+      <template slot="layout-search">
         <base-form
           :inline="true"
-          :model="queryParams"
+          :model="QueryParams"
           :show-default-foot="false"
         >
           <el-form-item>
@@ -77,7 +77,7 @@
     <!--发送记录弹窗-->
     <base-dialog
       title="发送记录"
-      :visible.sync="dialogVisible"
+      :visible.sync="Mixins_$DialogVisible"
       width="900px"
       center
     >
@@ -92,7 +92,7 @@
       @closed="reset"
     >
       <base-form
-        :model="dialogForm"
+        :model="DialogForm"
         :rules="dialogFormRules"
         label-width="120px"
         @submit="submitDialogForm"

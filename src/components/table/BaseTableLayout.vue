@@ -17,7 +17,7 @@
       <table-template
         ref="table"
         v-bind="$attrs"
-        :headers="headers"
+        :headers="Headers"
         :border="border"
         v-on="$listeners"
       >

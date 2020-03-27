@@ -3,10 +3,10 @@
     <!--table模板-->
     <base-table-layout
       v-loading="tableLoading"
-      :pagination="pagination"
+      :pagination="Mixins_Pagination"
     >
-      <template slot="top-left">
-        <base-form :inline="true" :model="queryParams" :show-default-foot="false">
+      <template slot="layout-search">
+        <base-form :inline="true" :model="QueryParams" :show-default-foot="false">
           <el-form-item>
             <base-date-picker
               v-model="queryParams.date"
@@ -58,7 +58,7 @@
                   a)   隔离区外{{ detail.numberOut }}人，共计{{ detail.totalPriceOut }}元<br>
                   b)   隔离区内{{ detail.numberIn }}人，共计{{ detail.totalPriceIn }}元<br>
                   2、到达——接机{{ detail.numberZrjj }}单，共计{{ detail.totalZrjjPrice }}元<br>
-<!--                  3、包厅: {{ detail.numberBt }}次，共计{{ detail.totalBtPrice }}元<br>-->
+                  <!--                  3、包厅: {{ detail.numberBt }}次，共计{{ detail.totalBtPrice }}元<br>-->
                   3、专车: {{ detail.numberZcjj }}单，共计{{ detail.totalZcjjPrice }}元<br>
                 </td>
               </tr>
