@@ -60,7 +60,8 @@
 </template>
 <script>
 import { Mixins } from '@/mixins/mixins'
-import ApiObject from '@/api/module/beDispatch/BeDispatchDispatchDeviceApi'
+// import ApiObject from '@/api/module/beDispatch/BeDispatchDispatchDeviceApi'
+import ApiObject from '@/api/module/trade/TradeDispatchDeviceApi'
 export default {
   name: 'Terminal',
   mixins: [Mixins],

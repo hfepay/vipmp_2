@@ -57,8 +57,10 @@
 </template>
 <script>
 import { Mixins } from '@/mixins/mixins'
-import ApiObject from '@/api/module/beTrade/BeTradeReceiveOrgApi'
-import DictionaryApi from '../../../api/module/beTrade/BeTradeDatadictApi'
+// import ApiObject from '@/api/module/beTrade/BeTradeReceiveOrgApi'
+import ApiObject from '@/api/module/trade/TradeReceiveOrgApi'
+// import DictionaryApi from '../../../api/module/beTrade/BeTradeDatadictApi'
+import DictionaryApi from '../../../api/module/trade/TradeDatadictApi'
 export default {
   name: 'ReceptionUnit',
   mixins: [Mixins],

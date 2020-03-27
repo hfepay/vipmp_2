@@ -1,0 +1,17 @@
+启动: 
+	// 安装依赖
+	1.cnpm install
+	//启动项目
+	2.
+		2.1 npm run dev //启动开发环境
+		2.2 npm run local //启动本地环境
+API设计介绍：
+	API结构：
+		EntityApi  extends ModuleApi extends BaseApi
+		其中 BaseApi包含了公共的crud，分页等方法
+	URL组成：
+		域名+ 模块url +实体url+ 自定义url  
+		域名:  .env.*文件中定义的VUE_APP_BASE_URL
+		模块url:  ModuleApi文件中的构造函数中第一个参数
+		实体url: EntityApi文件中的构造函数中第一个参数
+	
